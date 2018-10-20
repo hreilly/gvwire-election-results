@@ -1,0 +1,13 @@
+body {
+    font-family: sans-serif;
+}
+.Dem {
+    color: blue;
+}
+.Rep {
+    color: red;
+}
+#formatted-msr-data div, #formatted-st-asmbly-d1-data div, #formatted-gov-data div {
+    margin: auto auto 20px auto;
+    display: flex;
+}
