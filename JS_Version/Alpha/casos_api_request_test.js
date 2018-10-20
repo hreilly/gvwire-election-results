@@ -45,7 +45,7 @@ $.ajax({
   // Print raw data to the specified div id
   $('#raw-data').append(resp_string);
 
-  // Create array from the specified response key (using [] if there is a hyphen)
+  // Create array from the specified response key (using [] if the key uses a hyphen)
   var msr_obj = resp['ballot-measures'];
 
   // Call the header content
