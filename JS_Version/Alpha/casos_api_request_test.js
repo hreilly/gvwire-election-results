@@ -1,6 +1,10 @@
-// Hannah Reilly, 2018
+////////////////////////////////////////////////////////////////////////////////////
+// Created by Hannah Reilly, 2018
+////////////////////////////////////////////////////////////////////////////////////
 
-// This script pulls raw election data from the CA Secretary of State API and prints it. API is refreshed every 5 minutes.
+// This script pulls raw election data from the CA Secretary of State API and prints it. API is refreshed every 5 minutes during election reporting.
+
+////////////////////////////////////////////////////////////////////////////////////
 
 // Vanilla JS test request to verify connection to API. All GET requests should return a value of 200.
 
@@ -20,22 +24,35 @@ request.onload = function () {
 
 request.send();
 
+////////////////////////////////////////////////////////////////////////////////////
 // Parse data with JQuery
+////////////////////////////////////////////////////////////////////////////////////
 
 // Ballot Measures
 
+// Use ajax to call the API and execute a function when done
 $.ajax({
   url: "https://api.sos.ca.gov/returns/ballot-measures"
 }).done(function(resp) {
+
+  // Stringify JSON data and assign to variable
   var resp_string = JSON.stringify(resp);
+
+  // Print raw data to the specified div id
   $('#raw-data').append(resp_string);
+
+  // Create array from the specified response key (using [] if there is a hyphen)
   var msr_obj = resp['ballot-measures'];
-  var msr_header = '<div>' + resp.raceTitle + '<br>' +
+
+  // Call the header content
+  var msr_header = '<div class="election-category-header">' + resp.raceTitle + '<br>' +
                        resp.Reporting + '<br>' +
                        resp.ReportingTime + '</div>';
 
+  // Print the data to the specified div id
   $('#formatted-msr-data').append(msr_header);
 
+  // Loop through the array for each object in the 'msr_obj' array
   $.each( msr_obj, function( key, msr ){
     var msr_num = (msr.Number);
     var msr_name = (msr.Name);
@@ -50,7 +67,7 @@ $.ajax({
 
 });
 
-// Gubernatorial Candidates
+// Governor
 
 $.ajax({
   url: "https://api.sos.ca.gov/returns/governor"
@@ -58,7 +75,7 @@ $.ajax({
   var resp_string = JSON.stringify(resp);
   $('#raw-data').append(resp_string);
   var gov_obj = resp.candidates;
-  var gov_header = '<div>' + resp.raceTitle + '<br>' +
+  var gov_header = '<div class="election-category-header">' + resp.raceTitle + '<br>' +
                        resp.Reporting + '<br>' +
                        resp.ReportingTime + '</div>';
   $('#formatted-gov-data').append(gov_header);
@@ -74,13 +91,15 @@ $.ajax({
 
 });
 
+// State Assembly District 1
+
 $.ajax({
   url: "https://api.sos.ca.gov/returns/state-assembly/district/1"
 }).done(function(resp){
   var resp_string = JSON.stringify(resp);
   $('#raw-data').append(resp_string);
   var st_asmbly_d1_obj = resp.candidates;
-  var st_asmbly_d1_header = '<div>' + resp.raceTitle + '<br>' +
+  var st_asmbly_d1_header = '<div class="election-category-header">' + resp.raceTitle + '<br>' +
                             resp.Reporting + '<br>' +
                             resp.ReportingTime + '</div>';
 
