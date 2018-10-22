@@ -62,9 +62,10 @@ $.ajax({
     var msr_name = (msr.Name);
     var msr_yes = (msr.yesPercent);
     var msr_no = (msr.noPercent);
-    var msr_data = '<div>Measure&nbsp;' + msr_num + ':&nbsp;' + msr_name + '<br>' +
-                  'Yes:&nbsp;' + msr_yes + '%' + '<br>' +
-                  'No:&nbsp;' + msr_no + '%' + '</div>';
+    var msr_data = '<h3>Measure&nbsp;' + msr_num + ':&nbsp;' + msr_name + '</h3>' +
+                  '<div>' + 'Yes:&nbsp;' + msr_yes + '%' + '<br>' +
+                  'No:&nbsp;' + msr_no + '%' + '</div>' +
+                  '<hr>';
 
     $('#formatted-msr-data').append(msr_data);
   });
@@ -79,7 +80,7 @@ $.ajax({
   var resp_string = JSON.stringify(resp);
   $('#raw-data').append(resp_string);
   var gov_obj = resp.candidates;
-  var gov_header = '<div class="election-category-header">' + resp.raceTitle + '<br>' +
+  var gov_header = '<div class="election-category-header">' + '<h3>' + resp.raceTitle + '</h3>' +
                        resp.Reporting + '<br>' +
                        resp.ReportingTime + '</div>';
   $('#formatted-gov-data').append(gov_header);
@@ -87,7 +88,8 @@ $.ajax({
   $.each( gov_obj, function( key, gov ){
     var gov_name = (gov.Name);
     var gov_prty = (gov.Party);
-    var gov_data = '<div class="' + gov_prty + '">Candidate:&nbsp;' + gov_name + '</div>';
+    var gov_votes = (gov.Percent);
+    var gov_data = '<div>' + '<span class="' + gov_prty + '">' + gov_name + '</span>:' + ' ' + gov_votes + '%' + '</div>';
 
     $('#formatted-gov-data').append(gov_data);
 
@@ -113,7 +115,7 @@ $.ajax({
     var sad1_name = (sad1.Name);
     var sad1_prty = (sad1.Party);
     var sad1_votes = (sad1.Percent);
-    var sad1_data = '<div class="' + sad1_prty + '">Candidate:&nbsp;' + sad1_name + ' ' + sad1_votes + '%' + '</div>';
+    var sad1_data = '<div>' + '<span class="' + sad1_prty + '">' + sad1_name + '</span>:' + ' ' + sad1_votes + '%' + '</div>';
 
     $('#formatted-st-asmbly-d1-data').append(sad1_data);
 
