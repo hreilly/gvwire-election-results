@@ -14,7 +14,6 @@ from bs4 import BeautifulSoup
 from bs4 import SoupStrainer
 import pandas as pd
 import requests
-import re
 import json
 
 """
@@ -61,14 +60,10 @@ REMOVE_ATTRIBUTES = [
 for attribute in REMOVE_ATTRIBUTES:
     for tag in soup.find_all():
         del(tag[attribute])
-        
-# Clean up odd formatting of number percents
-        
-vote_prcnt_ptrn = re.compile(r'\d+[.]\d+%')
 
 # Print the final result of all filters and functions
-with open("../data/fcrov_data.html", "w") as file:
-    file.write(soup.prettify())
+# with open("../data/fcrov_data.html", "w") as file:
+    # file.write(soup.prettify())
 
 # Convert soup to data frame objects
 dfs = pd.read_html(str(soup), header=0)
