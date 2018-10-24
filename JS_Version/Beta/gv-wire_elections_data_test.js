@@ -8,7 +8,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////
 
-// Vanilla JS test request to verify connection to API. All GET requests should return a value of 200.
+// Vanilla JS test request to verify connection to API and JSON integrity. All GET requests should return a value of 200.
 
 var request = new XMLHttpRequest();
 
@@ -124,3 +124,33 @@ $.ajax({
   });
 
 });
+
+// End data from CA SoS
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// This script pulls raw election data from the Fresno County Registrar of Voters and prints it. JSON is refreshed every 10 minutes during election reporting.
+
+////////////////////////////////////////////////////////////////////////////////////
+
+// Vanilla JS test request to verify connection and JSON integrity. All GET requests should return a value of 200.
+
+var request = new XMLHttpRequest();
+
+request.open('GET', 'https://res.cloudinary.com/granville-homes/raw/upload/v1540338458/fcrov_data.json', true);
+request.onload = function () {
+
+  if (request.status >= 200 && request.status < 400) {
+    console.log('Connection to FCROV file successful!');
+  } else {
+    console.log('Error, no connection.');
+  }
+}
+
+request.send();
+
+// var data = JSON.parse(this.response);
+
+///////////////////////////////////////////
+// Parse data with JQuery
+///////////////////////////////////////////

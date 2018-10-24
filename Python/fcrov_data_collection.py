@@ -112,28 +112,35 @@ while True:
         dfs = pd.read_html(str(soup), header=0)
         
         # Define relevant data frames
-        overview = dfs[0]
+        # overview = dfs[0]
         city_council_3 = dfs[64]
         city_council_5 = dfs[66]
         city_council_7 = dfs[68]
         
-        # Var for naming cols
-        new_cols = {'Unnamed: 1':'partyPref', 'Unnamed: 2':'voteNum', 'Unnamed: 3':'votePrcnt'}
+        # Var for naming cols with no party affiliation
+        new_cols = {'Unnamed: 1':'partyPref','Unnamed: 2':'voteNum', 'Unnamed: 3':'votePrcnt'}
         
         # Rename columns in single data frames
-        city_council_5.rename(columns = new_cols, inplace = True)
         city_council_3.rename(columns = new_cols, inplace = True)
+        city_council_5.rename(columns = new_cols, inplace = True)
         city_council_7.rename(columns = new_cols, inplace = True)
         
+        # Remove NaNs from data
+        city_council_3 = city_council_3.fillna('')
+        city_council_5 = city_council_5.fillna('')
+        city_council_7 = city_council_7.fillna('')
+        
         # All relevant data
-        list_df = [overview, city_council_3, city_council_5, city_council_7]
+        list_df = city_council_3, city_council_5, city_council_7
         
         # Log list (disable in production environment)
         print(list_df)
         
         # Convert data frames to dict and write to JSON
         with open("../data/fcrov_data.json", 'w') as outfile:
-            outfile.write(json.dumps([dfs.to_dict() for dfs in list_df]))
+            outfile.write(city_council_3.to_json(orient='table'))
+            outfile.write(city_council_5.to_json(orient='table'))
+            outfile.write(city_council_7.to_json(orient='table'))
         
         # Update data in 10 minute intervals since start of last data update.
         time.sleep(600.0 - ((time.time() - starttime) % 600.0))
