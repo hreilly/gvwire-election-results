@@ -17,7 +17,6 @@ while True:
     from requests.exceptions import HTTPError
     from requests.exceptions import Timeout
     from requests.exceptions import TooManyRedirects
-    import json
     
     # Initiate HTTP request
 
