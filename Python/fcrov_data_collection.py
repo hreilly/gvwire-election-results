@@ -13,6 +13,7 @@ while True:
     from bs4 import BeautifulSoup
     from bs4 import SoupStrainer
     import pandas as pd
+    from pandas.core.groupby.groupby import DataError
     import requests
     from requests.exceptions import HTTPError
     from requests.exceptions import Timeout
@@ -31,39 +32,36 @@ while True:
     except HTTPError:
         
         # Print description of status response
-        print('Could not connect to remote source (fcrov_data.py). Trying again in 2 minutes.')
+        print('Could not connect to remote source (fcrov_data.py). Trying again in 2 minutes...')
         
         # Time of capture
         t = time.ctime()
         print(t)
         
         # Set timer to try request again
-        time.sleep(120.0 - ((time.time() - starttime) % 120.0)) # Update data in 120 sec. intervals since start of last data update.
+        time.sleep(120.0 - ((time.time() - starttime) % 120.0))
         
     except Timeout:
         
-        print('Connection timed out (fcrov_data.py). Trying again in 2 minutes.')
+        print('Connection timed out (fcrov_data.py). Trying again in 2 minutes...')
         
         t = time.ctime()
         print(t)
         
-        time.sleep(120.0 - ((time.time() - starttime) % 120.0)) # Update data in 120 sec. intervals since start of last data update.
+        time.sleep(120.0 - ((time.time() - starttime) % 120.0))
     
     except TooManyRedirects:
         
-        print('Connection attempted a redirect (fcrov_data.py). Trying again in 2 minutes.')
+        print('Connection attempted a redirect (fcrov_data.py). Trying again in 2 minutes...')
         
         t = time.ctime()
         print(t)
         
-        time.sleep(120.0 - ((time.time() - starttime) % 120.0)) # Update data in 120 sec. intervals since start of last data update.
+        time.sleep(120.0 - ((time.time() - starttime) % 120.0))
     
     else:
         
-        print('Connection successful (fcrov_data.py). Updating again in 10 minutes.')
-        
-        t = time.ctime()
-        print(t)
+        print('Connection successful (fcrov_data.py).')
         
         ########## Begin processing response from HTTP request
         
@@ -108,16 +106,20 @@ while True:
             # file.write(soup.prettify())
         
         # Convert soup to data frame objects with first row as header
-        dfs = pd.read_html(str(soup), header=0)
+        dfs = pd.read_html(str(soup), header=None)
         
         # Define relevant data frames
-        # overview = dfs[0]
         city_council_3 = dfs[64]
         city_council_5 = dfs[66]
         city_council_7 = dfs[68]
         
-        # Var for naming cols with no party affiliation
-        new_cols = {'Unnamed: 1':'partyPref','Unnamed: 2':'voteNum', 'Unnamed: 3':'votePrcnt'}
+        # Add "Election" Column
+        city_council_3['4'] = 'FRESNO CITY COUNCIL NO 3'
+        city_council_5['4'] = 'FRESNO CITY COUNCIL NO 5'
+        city_council_7['4'] = 'FRESNO CITY COUNCIL NO 7'
+        
+        # Var for naming cols
+        new_cols = {0:'item',1:'partyPref',2:'voteNum', 3:'votePrcnt', '4':'election'}
         
         # Rename columns in single data frames
         city_council_3.rename(columns = new_cols, inplace = True)
@@ -130,23 +132,40 @@ while True:
         city_council_7 = city_council_7.fillna('')
         
         # All relevant data
-        list_df = city_council_3, city_council_5, city_council_7
+        list_df = [city_council_3, city_council_5, city_council_7]
         
-        # Log list (disable in production environment)
-        print(list_df)
+        try:
         
-        # Convert data frames to dict and write to JSON
-        with open("../data/fcrov_data.json", 'w') as outfile:
-            outfile.write(city_council_3.to_json(orient='table'))
-            outfile.write(city_council_5.to_json(orient='table'))
-            outfile.write(city_council_7.to_json(orient='table'))
+            pd.concat(list_df, sort=False).to_csv('../data/fcrov_data.csv')
+            
+        except DataError:
+            
+            print('Error in pandas data processing (fcrov_data.py). Trying again to 2 mins...')
+            
+            t = time.ctime()
+            print(t)
         
-        # Update data in 10 minute intervals since start of last data update.
-        time.sleep(600.0 - ((time.time() - starttime) % 600.0))
-
-
-
-
-
+            time.sleep(120.0 - ((time.time() - starttime) % 120.0))
+        
+        except PermissionError:
+            
+            print('Permission error (fcrov_data.py). Check CSV file. Trying again to 2 mins...')
+            
+            t = time.ctime()
+            print(t)
+        
+            time.sleep(120.0 - ((time.time() - starttime) % 120.0))
+        
+        else:
+            
+            print('Write to file successful. Process will refresh in 10 mins...')
+            t = time.ctime()
+            print(t)
+            
+            # Log list (disable in production environment)
+            # print(list_df)
+            
+            # Update data in 10 minute intervals since start of last data update.
+            time.sleep(600.0 - ((time.time() - starttime) % 600.0))
 
 

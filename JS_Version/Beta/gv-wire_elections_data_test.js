@@ -133,15 +133,13 @@ $.ajax({
 
 ////////////////////////////////////////////////////////////////////////////////////
 
-// Vanilla JS test request to verify connection and JSON integrity. All GET requests should return a value of 200.
-
 var request = new XMLHttpRequest();
 
-request.open('GET', 'https://res.cloudinary.com/granville-homes/raw/upload/v1540338458/fcrov_data.json', true);
+request.open('GET', 'https://res.cloudinary.com/granville-homes/raw/upload/v1540426126/fcrov_data.csv', true);
 request.onload = function () {
 
   if (request.status >= 200 && request.status < 400) {
-    console.log('Connection to FCROV file successful!');
+    console.log('Connection to FCROV CSV successful!');
   } else {
     console.log('Error, no connection.');
   }
@@ -149,8 +147,13 @@ request.onload = function () {
 
 request.send();
 
-// var data = JSON.parse(this.response);
+///////////////////////////////////////////
+// Parse CSV data with JQuery
+///////////////////////////////////////////
 
-///////////////////////////////////////////
-// Parse data with JQuery
-///////////////////////////////////////////
+$.ajax({
+    url: 'https://res.cloudinary.com/granville-homes/raw/upload/v1540426126/fcrov_data.csv',
+    dataType: 'text',
+  }).done(function(data){
+    $('#fresno-county-data').append(data);
+  });
