@@ -105,10 +105,12 @@ while True:
         with open("../data/fcrov_data.html", "w") as file:
             file.write(soup.prettify())
         
-        # Convert soup to data frame objects with first row as header
+        # ----------------------------------------------- End Soup Functions, Begin Pandas
+        
+        # Convert soup to data frame objects
         dfs = pd.read_html(str(soup), header=None)
         
-        # Define relevant data frames
+        # Define relevant data frames\
         city_council_3 = dfs[64]
         city_council_5 = dfs[66]
         city_council_7 = dfs[68]
@@ -140,7 +142,7 @@ while True:
             
         except DataError:
             
-            print('Error in pandas data processing (fcrov_data.py). Trying again to 2 mins...')
+            print('Error in pandas data processing (fcrov_data.py). Trying again in 2 mins...')
             
             t = time.ctime()
             print(t)
@@ -149,7 +151,7 @@ while True:
         
         except PermissionError:
             
-            print('Permission error (fcrov_data.py). Check CSV file. Trying again to 2 mins...')
+            print('Permission error (fcrov_data.py). Check CSV file. Trying again in 2 mins...')
             
             t = time.ctime()
             print(t)
