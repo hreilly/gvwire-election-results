@@ -146,6 +146,8 @@ while True:
         
         # ----------------------------------------------- End initial df defs
         
+        # -------------------------- Season that soup
+        
         # Drop useless rows
         cc3 = cc3.drop(cc3.index[[1,4,5,7,8,9]])
         cc5 = cc5.drop(cc5.index[[1,4,5,7,8,9]])
@@ -249,13 +251,29 @@ while True:
         cusd1 = cusd1.fillna('')
         cusd3 = cusd3.fillna('')
         
-        # Write data to files
+        # -------------------------- Write data to files
         
         try:
-        
+            
+            # Servin' it up, Gary's way
             cc3.to_json('./data/cc3.json', orient='table', index=True)
             cc5.to_json('./data/cc5.json', orient='table', index=True)
             cc7.to_json('./data/cc7.json', orient='table', index=True)
+            msrA.to_json('./data/msrA.json', orient='table', index=True)
+            msrO.to_json('./data/msrO.json', orient='table', index=True)
+            msrP.to_json('./data/msrP.json', orient='table', index=True)
+            msrQ.to_json('./data/msrQ.json', orient='table', index=True)
+            fcTrsr.to_json('./data/fcTrsr.json', orient='table', index=True)
+            fusd1.to_json('./data/fusd1.json', orient='table', index=True)
+            fusd3.to_json('./data/fusd3.json', orient='table', index=True)
+            fusd4.to_json('./data/fusd4.json', orient='table', index=True)
+            fusd7.to_json('./data/fusd7.json', orient='table', index=True)
+            cenusd1.to_json('./data/cenusd1.json', orient='table', index=True)
+            cenusd2.to_json('./data/cenusd2.json', orient='table', index=True)
+            cenusd4.to_json('./data/cenusd4.json', orient='table', index=True)
+            cenusd7.to_json('./data/cenusd7.json', orient='table', index=True)
+            cusd1.to_json('./data/cusd1.json', orient='table', index=True)
+            cusd3.to_json('./data/cusd3.json', orient='table', index=True)
             
         except DataError:
             
@@ -285,6 +303,7 @@ while True:
             # print(list_df)
             
             # Update data in 10 minute intervals since start of last data update.
+            # Please sir, may I have some more?
             time.sleep(600.0 - ((time.time() - starttime) % 600.0))
 
 
