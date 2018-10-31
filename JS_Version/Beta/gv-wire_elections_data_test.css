@@ -2,6 +2,10 @@
 body {
     font-family: sans-serif;
 }
+#elections-body-container {
+    max-width: 1420px;
+    margin: auto;
+}
 #live-filter-results {
     display: block;
     margin: auto;

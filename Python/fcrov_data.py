@@ -102,26 +102,69 @@ while True:
                 del(tag[attribute])
         
         # Print the final result of all filters and functions (disable after data identification)
-        with open("../data/fcrov_data.html", "w") as file:
-            file.write(soup.prettify())
+        # with open("../data/fcrov_data.html", "w") as file:
+            # file.write(soup.prettify())
         
         # ----------------------------------------------- End Soup Functions, Begin Pandas
         
         # Convert soup to data frame objects
         dfs = pd.read_html(str(soup), header=None)
         
-        # DataFrame.dropna(axis=0, how='any', thresh=None)
-        
-        # Define relevant data frames\
+        # -------------------------- Define relevant data frames
         overview_data = dfs[3]
+        
+        # City Council races
         cc3 = dfs[64]
         cc5 = dfs[66]
         cc7 = dfs[68]
+        
+        # Ballot measures
+        msrA = dfs[4]
+        msrO = dfs[6]
+        msrP = dfs[8]
+        msrQ = dfs[10]
+        
+        # Controller/Treasurer
+        fcTrsr = dfs[12]
+        
+        # Fresno Unified School District
+        fusd1 = dfs[14]
+        fusd3 = dfs[16]
+        fusd4 = dfs[18]
+        fusd7 = dfs[20]
+        
+        # Central Unified School District
+        cenusd1 = dfs[22]
+        cenusd2 = dfs[24]
+        cenusd4 = dfs[26]
+        cenusd7 = dfs[28]
+        
+        # Clovis Unified School District
+        
+        cusd1 = dfs[30]
+        cusd3 = dfs[32]
+        
+        # ----------------------------------------------- End initial df defs
         
         # Drop useless rows
         cc3 = cc3.drop(cc3.index[[1,4,5,7,8,9]])
         cc5 = cc5.drop(cc5.index[[1,4,5,7,8,9]])
         cc7 = cc7.drop(cc7.index[[1,4,5,7,8,9]])
+        msrA = msrA.drop(msrA.index[[1,4,5,7,8,9]])
+        msrO = msrO.drop(msrO.index[[1,4,5,7,8,9]])
+        msrP = msrP.drop(msrP.index[[1,4,5,7,8,9]])
+        msrQ = msrQ.drop(msrQ.index[[1,4,5,7,8,9]])
+        fcTrsr = fcTrsr.drop(fcTrsr.index[[1,4,5,7,8,9]])
+        fusd1 = fusd1.drop(fusd1.index[[1,4,5,7,8,9]])
+        fusd3 = fusd3.drop(fusd3.index[[1,4,5,7,8,9]])
+        fusd4 = fusd4.drop(fusd4.index[[1,4,5,7,8,9]])
+        fusd7 = fusd7.drop(fusd7.index[[1,4,5,7,8,9]])
+        cenusd1 = cenusd1.drop(cenusd1.index[[1,4,5,7,8,9]])
+        cenusd2 = cenusd2.drop(cenusd2.index[[1,4,5,7,8,9]])
+        cenusd4 = cenusd4.drop(cenusd4.index[[1,4,5,7,8,9]])
+        cenusd7 = cenusd7.drop(cenusd7.index[[1,4,5,7,8,9]])
+        cusd1 = cusd1.drop(cusd1.index[[1,4,5,7,8,9]])
+        cusd3 = cusd3.drop(cusd3.index[[1,4,5,7,8,9]])
         
         # Var for naming cols
         new_cols = {0:'item', 1:'partyPref', 2:'voteNum', 3:'votePrcnt'}
@@ -130,25 +173,83 @@ while True:
         cc3.rename(columns = new_cols, inplace = True)
         cc5.rename(columns = new_cols, inplace = True)
         cc7.rename(columns = new_cols, inplace = True)
+        msrA.rename(columns = new_cols, inplace = True)
+        msrO.rename(columns = new_cols, inplace = True)
+        msrP.rename(columns = new_cols, inplace = True)
+        msrQ.rename(columns = new_cols, inplace = True)
+        fcTrsr.rename(columns = new_cols, inplace = True)
+        fusd1.rename(columns = new_cols, inplace = True)
+        fusd3.rename(columns = new_cols, inplace = True)
+        fusd4.rename(columns = new_cols, inplace = True)
+        fusd7.rename(columns = new_cols, inplace = True)
+        cenusd1.rename(columns = new_cols, inplace = True)
+        cenusd2.rename(columns = new_cols, inplace = True)
+        cenusd4.rename(columns = new_cols, inplace = True)
+        cenusd7.rename(columns = new_cols, inplace = True)
+        cusd1.rename(columns = new_cols, inplace = True)
+        cusd3.rename(columns = new_cols, inplace = True)
         
         # Delete empty columns
         cc3 = cc3.dropna(axis=1, how='all', thresh=None)
         cc5 = cc5.dropna(axis=1, how='all', thresh=None)
         cc7 = cc7.dropna(axis=1, how='all', thresh=None)
+        msrA = msrA.dropna(axis=1, how='all', thresh=None)
+        msrO = msrO.dropna(axis=1, how='all', thresh=None)
+        msrP = msrP.dropna(axis=1, how='all', thresh=None)
+        msrQ = msrQ.dropna(axis=1, how='all', thresh=None)
+        fcTrsr = fcTrsr.dropna(axis=1, how='all', thresh=None)
+        fusd1 = fusd1.dropna(axis=1, how='all', thresh=None)
+        fusd3 = fusd3.dropna(axis=1, how='all', thresh=None)
+        fusd4 = fusd4.dropna(axis=1, how='all', thresh=None)
+        fusd7 = fusd7.dropna(axis=1, how='all', thresh=None)
+        cenusd1 = cenusd1.dropna(axis=1, how='all', thresh=None)
+        cenusd2 = cenusd2.dropna(axis=1, how='all', thresh=None)
+        cenusd4 = cenusd4.dropna(axis=1, how='all', thresh=None)
+        cenusd7 = cenusd7.dropna(axis=1, how='all', thresh=None)
+        cusd1 = cusd1.dropna(axis=1, how='all', thresh=None)
+        cusd3 = cusd3.dropna(axis=1, how='all', thresh=None)
         
         # Delete empty rows
         cc3 = cc3.dropna(axis=0, how='all', thresh=None)
         cc5 = cc5.dropna(axis=0, how='all', thresh=None)
         cc7 = cc7.dropna(axis=0, how='all', thresh=None)
+        msrA = msrA.dropna(axis=0, how='all', thresh=None)
+        msrO = msrO.dropna(axis=0, how='all', thresh=None)
+        msrP = msrP.dropna(axis=0, how='all', thresh=None)
+        msrQ = msrQ.dropna(axis=0, how='all', thresh=None)
+        fcTrsr = fcTrsr.dropna(axis=0, how='all', thresh=None)
+        fusd1 = fusd1.dropna(axis=0, how='all', thresh=None)
+        fusd3 = fusd3.dropna(axis=0, how='all', thresh=None)
+        fusd4 = fusd4.dropna(axis=0, how='all', thresh=None)
+        fusd7 = fusd7.dropna(axis=0, how='all', thresh=None)
+        cenusd1 = cenusd1.dropna(axis=0, how='all', thresh=None)
+        cenusd2 = cenusd2.dropna(axis=0, how='all', thresh=None)
+        cenusd4 = cenusd4.dropna(axis=0, how='all', thresh=None)
+        cenusd7 = cenusd7.dropna(axis=0, how='all', thresh=None)
+        cusd1 = cusd1.dropna(axis=0, how='all', thresh=None)
+        cusd3 = cusd3.dropna(axis=0, how='all', thresh=None)
         
         # Remove NaNs from data
         cc3 = cc3.fillna('')
         cc5 = cc5.fillna('')
         cc7 = cc7.fillna('')
+        msrA = msrA.fillna('')
+        msrO = msrO.fillna('')
+        msrP = msrP.fillna('')
+        msrQ = msrQ.fillna('')
+        fcTrsr = fcTrsr.fillna('')
+        fusd1 = fusd1.fillna('')
+        fusd3 = fusd3.fillna('')
+        fusd4 = fusd4.fillna('')
+        fusd7 = fusd7.fillna('')
+        cenusd1 = cenusd1.fillna('')
+        cenusd2 = cenusd2.fillna('')
+        cenusd4 = cenusd4.fillna('')
+        cenusd7 = cenusd7.fillna('')
+        cusd1 = cusd1.fillna('')
+        cusd3 = cusd3.fillna('')
         
-        # All relevant data
-        # list_df = [cc3, cc5, cc7]
-        # all_data = pd.concat(list_df, axis=0, sort=False)
+        # Write data to files
         
         try:
         
