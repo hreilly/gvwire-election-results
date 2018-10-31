@@ -1,3 +1,4 @@
+/* Styling for initial HTML document */
 body {
     font-family: sans-serif;
 }
@@ -14,12 +15,6 @@ body {
     font-family: inherit;
     margin: bottom;
     padding-left: 10px;
-}
-.Dem {
-    color: #2196F3;
-}
-.Rep {
-    color: #F44336;
 }
 .election-candidate, .ballot-measure {
     font-weight: bold;
@@ -40,20 +35,33 @@ body {
 }
 #formatted-st-asmbly-d1-data div, #formatted-gov-data div {
     margin: auto auto 20px auto;
-    /*display: flex;*/
 }
+@media screen and (max-width: 770px) {
+    .election-results-group {
+        width: 100%;
+    }
+}
+
+/* Party-based styling for SoS data */
 .Dem::after {
     content: ' (D)'
 }
 .Rep::after {
     content: ' (R)'
 }
-/*.election-category-header {
-    font-weight: bold;
-}*/
+.Dem {
+    color: #2196F3;
+}
+.Rep {
+    color: #F44336;
+}
 
-@media screen and (max-width: 770px) {
-    .election-results-group {
-        width: 100%;
-    }
+/* Array value styling for Fresno County data */
+
+.index-item-0 {
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+.index-item-6 {
+    padding-bottom: 20px;
 }

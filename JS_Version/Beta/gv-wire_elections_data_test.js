@@ -154,7 +154,7 @@ $.ajax({
 
 var request = new XMLHttpRequest();
 
-request.open('GET', 'https://res.cloudinary.com/granville-homes/raw/upload/v1540948443/city_council_3.json', true);
+request.open('GET', 'https://res.cloudinary.com/granville-homes/raw/upload/v1541017376/cc3.json', true);
 request.onload = function () {
 
   if (request.status >= 200 && request.status < 400) {
@@ -170,19 +170,69 @@ request.send();
 // Parse JSON data with JQuery
 ///////////////////////////////////////////
 
+// City Council District 3
+
 $.ajax({
-  url: 'https://res.cloudinary.com/granville-homes/raw/upload/v1540948443/city_council_3.json'
+  url: 'https://res.cloudinary.com/granville-homes/raw/upload/v1541017376/cc3.json'
 }).done(function(resp){
   var resp_string = JSON.stringify(resp);
   $('#fresno-county-data').append(resp_string);
   var city_council_3 = resp.data;
   $.each( city_council_3, function( key, cc3 ){
+    var cc3_index = (cc3.index);
     var cc3_item = (cc3.item);
     var cc3_votes = (cc3.votePrcnt);
     var cc3_num = (cc3.voteNum);
-    var cc3_data = '<div>' + '<span>' + cc3_item + '</span>:' + ' ' + cc3_votes + ' ' + cc3_num + '</div>';
+    var cc3_data = '<div class="index-item-' + cc3_index + '">' +
+                   '<span>' + cc3_item + '</span>' + (cc3_num != false ? ': ' : "") + ' ' + (cc3_votes != false ? cc3_votes + ' | ' : "") + cc3_num + '</div>';
 
     $('#formatted-city-council-3-data').append(cc3_data);
+
+  });
+
+});
+
+// City Council District 5
+
+$.ajax({
+  url: 'https://res.cloudinary.com/granville-homes/raw/upload/v1541017375/cc5.json'
+}).done(function(resp){
+  var resp_string = JSON.stringify(resp);
+  $('#fresno-county-data').append(resp_string);
+  var city_council_5 = resp.data;
+  $.each( city_council_5, function( key, cc5 ){
+    var cc5_index = (cc5.index);
+    var cc5_item = (cc5.item);
+    var cc5_votes = (cc5.votePrcnt);
+    var cc5_num = (cc5.voteNum);
+    var cc5_data = '<div class="index-item-' + cc5_index + '">' + '<span>' + cc5_item + '</span>' + (cc5_num != false ? ': ' : "") + ' ' + (cc5_votes != false ? cc5_votes + ' | ' : "") + cc5_num + '</div>';
+
+    $('#formatted-city-council-5-data').append(cc5_data);
+
+  });
+
+});
+
+// City Council District 7
+
+$.ajax({
+  url: 'https://res.cloudinary.com/granville-homes/raw/upload/v1541017375/cc7.json'
+}).done(function(resp){
+  var resp_string = JSON.stringify(resp);
+  $('#fresno-county-data').append(resp_string);
+  var city_council_7 = resp.data;
+  $.each( city_council_7, function( key, cc7 ){
+    var cc7_index = (cc7.index);
+    var cc7_item = (cc7.item);
+    var cc7_votes = (cc7.votePrcnt);
+    var cc7_num = (cc7.voteNum);
+    var cc7_data = '<div class="index-item-' + cc7_index + '">' +
+                   '<span>' + cc7_item + '</span>' + 
+                   (cc7_num != false ? ': ' : "") + ' ' + 
+                   (cc7_votes != false ? cc7_votes + ' | ' : "") + 
+                   cc7_num + '</div>';
+
+    $('#formatted-city-council-7-data').append(cc7_data);
 
   });
 

@@ -102,8 +102,8 @@ while True:
                 del(tag[attribute])
         
         # Print the final result of all filters and functions (disable after data identification)
-        # with open("../data/fcrov_data.html", "w") as file:
-            # file.write(soup.prettify())
+        with open("../data/fcrov_data.html", "w") as file:
+            file.write(soup.prettify())
         
         # ----------------------------------------------- End Soup Functions, Begin Pandas
         
