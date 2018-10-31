@@ -152,9 +152,9 @@ while True:
         
         try:
         
-            cc3.to_json('../data/cc3.json', orient='table', index=True)
-            cc5.to_json('../data/cc5.json', orient='table', index=True)
-            cc7.to_json('../data/cc7.json', orient='table', index=True)
+            cc3.to_json('./data/cc3.json', orient='table', index=True)
+            cc5.to_json('./data/cc5.json', orient='table', index=True)
+            cc7.to_json('./data/cc7.json', orient='table', index=True)
             
         except DataError:
             
