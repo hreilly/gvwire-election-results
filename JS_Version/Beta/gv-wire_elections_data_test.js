@@ -148,12 +148,23 @@ request.onload = function () {
 request.send();
 
 ///////////////////////////////////////////
-// Parse CSV data with JQuery
+// Parse JSON data with JQuery
 ///////////////////////////////////////////
 
 $.ajax({
-    url: 'https://res.cloudinary.com/granville-homes/raw/upload/v1540426126/fcrov_data.csv',
-    dataType: 'text',
-  }).done(function(data){
-    $('#fresno-county-data').append(data);
+  url: 'https://res.cloudinary.com/granville-homes/raw/upload/v1540948443/city_council_3.json'
+}).done(function(resp){
+  var resp_string = JSON.stringify(resp);
+  $('#fresno-county-data').append(resp_string);
+  var city_council_3 = resp.data;
+  $.each( city_council_3, function( key, cc3 ){
+    var cc3_item = (cc3.item);
+    var cc3_votes = (cc3.votePrcnt);
+    var cc3_num = (cc3.voteNum);
+    var cc3_data = '<div>' + '<span>' + cc3_item + '</span>:' + ' ' + cc3_votes + ' ' + cc3_num + '</div>';
+
+    $('#formatted-city-council-3-data').append(cc3_data);
+
   });
+
+});

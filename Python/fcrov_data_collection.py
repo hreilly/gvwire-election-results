@@ -110,35 +110,51 @@ while True:
         # Convert soup to data frame objects
         dfs = pd.read_html(str(soup), header=None)
         
+        # DataFrame.dropna(axis=0, how='any', thresh=None)
+        
         # Define relevant data frames\
+        overview_data = dfs[2]
         city_council_3 = dfs[64]
         city_council_5 = dfs[66]
         city_council_7 = dfs[68]
         
-        # Add "Election" Column
-        city_council_3['4'] = 'FRESNO CITY COUNCIL NO 3'
-        city_council_5['4'] = 'FRESNO CITY COUNCIL NO 5'
-        city_council_7['4'] = 'FRESNO CITY COUNCIL NO 7'
-        
         # Var for naming cols
-        new_cols = {0:'item',1:'partyPref',2:'voteNum', 3:'votePrcnt', '4':'election'}
+        new_cols = {0:'item', 1:'partyPref', 2:'voteNum', 3:'votePrcnt'}
         
         # Rename columns in single data frames
         city_council_3.rename(columns = new_cols, inplace = True)
         city_council_5.rename(columns = new_cols, inplace = True)
         city_council_7.rename(columns = new_cols, inplace = True)
         
+        # Delete empty columns
+        city_council_3 = city_council_3.dropna(axis=1, how='all', thresh=None)
+        city_council_5 = city_council_5.dropna(axis=1, how='all', thresh=None)
+        city_council_7 = city_council_7.dropna(axis=1, how='all', thresh=None)
+        
+        # Delete empty rows
+        city_council_3 = city_council_3.dropna(axis=0, how='all', thresh=None)
+        city_council_5 = city_council_5.dropna(axis=0, how='all', thresh=None)
+        city_council_7 = city_council_7.dropna(axis=0, how='all', thresh=None)
+        
         # Remove NaNs from data
         city_council_3 = city_council_3.fillna('')
         city_council_5 = city_council_5.fillna('')
         city_council_7 = city_council_7.fillna('')
         
+        # Drop useless rows
+        city_council_3 = city_council_3.drop(city_council_3.index[[1,4,5,7,8,9]])
+        city_council_5 = city_council_5.drop(city_council_5.index[[1,4,5,7,8,9]])
+        city_council_7 = city_council_7.drop(city_council_7.index[[1,4,5,7,8,9]])
+        
         # All relevant data
-        list_df = [city_council_3, city_council_5, city_council_7]
+        # list_df = [city_council_3, city_council_5, city_council_7]
+        # all_data = pd.concat(list_df, axis=0, sort=False)
         
         try:
         
-            pd.concat(list_df, sort=False).to_csv('../data/fcrov_data.csv')
+            city_council_3.to_json('../data/city_council_3.json', orient='table', index=True)
+            city_council_5.to_json('../data/city_council_5.json', orient='table', index=True)
+            city_council_7.to_json('../data/city_council_7.json', orient='table', index=True)
             
         except DataError:
             
