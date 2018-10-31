@@ -102,8 +102,8 @@ while True:
                 del(tag[attribute])
         
         # Print the final result of all filters and functions (disable after data identification)
-        with open("../data/fcrov_data.html", "w") as file:
-            file.write(soup.prettify())
+        # with open("../data/fcrov_data.html", "w") as file:
+            # file.write(soup.prettify())
         
         # ----------------------------------------------- End Soup Functions, Begin Pandas
         
@@ -113,48 +113,48 @@ while True:
         # DataFrame.dropna(axis=0, how='any', thresh=None)
         
         # Define relevant data frames\
-        overview_data = dfs[2]
-        city_council_3 = dfs[64]
-        city_council_5 = dfs[66]
-        city_council_7 = dfs[68]
+        overview_data = dfs[3]
+        cc3 = dfs[64]
+        cc5 = dfs[66]
+        cc7 = dfs[68]
+        
+        # Drop useless rows
+        cc3 = cc3.drop(cc3.index[[1,4,5,7,8,9]])
+        cc5 = cc5.drop(cc5.index[[1,4,5,7,8,9]])
+        cc7 = cc7.drop(cc7.index[[1,4,5,7,8,9]])
         
         # Var for naming cols
         new_cols = {0:'item', 1:'partyPref', 2:'voteNum', 3:'votePrcnt'}
         
         # Rename columns in single data frames
-        city_council_3.rename(columns = new_cols, inplace = True)
-        city_council_5.rename(columns = new_cols, inplace = True)
-        city_council_7.rename(columns = new_cols, inplace = True)
+        cc3.rename(columns = new_cols, inplace = True)
+        cc5.rename(columns = new_cols, inplace = True)
+        cc7.rename(columns = new_cols, inplace = True)
         
         # Delete empty columns
-        city_council_3 = city_council_3.dropna(axis=1, how='all', thresh=None)
-        city_council_5 = city_council_5.dropna(axis=1, how='all', thresh=None)
-        city_council_7 = city_council_7.dropna(axis=1, how='all', thresh=None)
+        cc3 = cc3.dropna(axis=1, how='all', thresh=None)
+        cc5 = cc5.dropna(axis=1, how='all', thresh=None)
+        cc7 = cc7.dropna(axis=1, how='all', thresh=None)
         
         # Delete empty rows
-        city_council_3 = city_council_3.dropna(axis=0, how='all', thresh=None)
-        city_council_5 = city_council_5.dropna(axis=0, how='all', thresh=None)
-        city_council_7 = city_council_7.dropna(axis=0, how='all', thresh=None)
+        cc3 = cc3.dropna(axis=0, how='all', thresh=None)
+        cc5 = cc5.dropna(axis=0, how='all', thresh=None)
+        cc7 = cc7.dropna(axis=0, how='all', thresh=None)
         
         # Remove NaNs from data
-        city_council_3 = city_council_3.fillna('')
-        city_council_5 = city_council_5.fillna('')
-        city_council_7 = city_council_7.fillna('')
-        
-        # Drop useless rows
-        city_council_3 = city_council_3.drop(city_council_3.index[[1,4,5,7,8,9]])
-        city_council_5 = city_council_5.drop(city_council_5.index[[1,4,5,7,8,9]])
-        city_council_7 = city_council_7.drop(city_council_7.index[[1,4,5,7,8,9]])
+        cc3 = cc3.fillna('')
+        cc5 = cc5.fillna('')
+        cc7 = cc7.fillna('')
         
         # All relevant data
-        # list_df = [city_council_3, city_council_5, city_council_7]
+        # list_df = [cc3, cc5, cc7]
         # all_data = pd.concat(list_df, axis=0, sort=False)
         
         try:
         
-            city_council_3.to_json('../data/city_council_3.json', orient='table', index=True)
-            city_council_5.to_json('../data/city_council_5.json', orient='table', index=True)
-            city_council_7.to_json('../data/city_council_7.json', orient='table', index=True)
+            cc3.to_json('../data/cc3.json', orient='table', index=True)
+            cc5.to_json('../data/cc5.json', orient='table', index=True)
+            cc7.to_json('../data/cc7.json', orient='table', index=True)
             
         except DataError:
             

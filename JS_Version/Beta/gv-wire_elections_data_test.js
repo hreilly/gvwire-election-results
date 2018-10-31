@@ -4,6 +4,26 @@
 //
 ///////////////////////////////////////////
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Live search and no-conflict mode.
+
+////////////////////////////////////////////////////////////////////////////////////
+
+// Enable no-conflict for legacy JQuery features
+// $.noConflict(true);
+// Live filter results
+$(document).ready(function(){
+    $("#live-filter-results").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $(".election-results-group").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // This script pulls raw election data from the CA Secretary of State API and prints it. API is refreshed every 5 minutes during election reporting.
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -47,12 +67,12 @@ $.ajax({
   var msr_obj = resp['ballot-measures'];
 
   // Call the header content
-  var msr_header = '<div class="election-category-header">' + resp.raceTitle + '<br>' +
+  var msr_header = '<div class="election-category-header">' + '<h3>' + resp.raceTitle + '</h3>' +
                        resp.Reporting + '<br>' +
                        resp.ReportingTime + '</div>';
 
   // Print the data to the specified div id
-  $('#formatted-msr-data').append(msr_header);
+  $('#msr-data-header').append(msr_header);
 
   // Loop through the array for each object in the 'msr_obj' array
   $.each( msr_obj, function( key, msr ){
@@ -60,12 +80,11 @@ $.ajax({
     var msr_name = (msr.Name);
     var msr_yes = (msr.yesPercent);
     var msr_no = (msr.noPercent);
-    var msr_data = '<h3>Measure&nbsp;' + msr_num + ':&nbsp;' + msr_name + '</h3>' +
-                  '<div>' + 'Yes:&nbsp;' + msr_yes + '%' + '<br>' +
-                  'No:&nbsp;' + msr_no + '%' + '</div>' +
-                  '<hr>';
+    var msr_data = '<div class="ballot-measure election-results-group">' + '<h3>Measure ' + msr_num + ': ' + msr_name + '</h3>' +
+                   '<div>' + 'Yes:&nbsp;' + msr_yes + '%' + '<br>' +
+                   'No:&nbsp;' + msr_no + '%' + '</div>' + '</div>';
 
-    $('#formatted-msr-data').append(msr_data);
+    $('#msr-data-container').append(msr_data);
   });
 
 });
@@ -89,7 +108,7 @@ $.ajax({
     var gov_name = (gov.Name);
     var gov_prty = (gov.Party);
     var gov_votes = (gov.Percent);
-    var gov_data = '<div>' + '<span class="' + gov_prty + '">' + gov_name + '</span>:' + ' ' + gov_votes + '%' + '</div>';
+    var gov_data = '<div class="election-candidate">' + '<span class="' + gov_prty + '">' + gov_name + '</span>:' + ' ' + gov_votes + '%' + '</div>';
 
     $('#formatted-gov-data').append(gov_data);
 
@@ -107,7 +126,7 @@ $.ajax({
   var resp_string = JSON.stringify(resp);
   $('#raw-data').append(resp_string);
   var st_asmbly_d1_obj = resp.candidates;
-  var st_asmbly_d1_header = '<div class="election-category-header">' + resp.raceTitle + '<br>' +
+  var st_asmbly_d1_header = '<div class="election-category-header">' + '<h3>' + resp.raceTitle + '</h3>' +
                             resp.Reporting + '<br>' +
                             resp.ReportingTime + '</div>';
 
@@ -117,7 +136,7 @@ $.ajax({
     var sad1_name = (sad1.Name);
     var sad1_prty = (sad1.Party);
     var sad1_votes = (sad1.Percent);
-    var sad1_data = '<div>' + '<span class="' + sad1_prty + '">' + sad1_name + '</span>:' + ' ' + sad1_votes + '%' + '</div>';
+    var sad1_data = '<div class="election-candidate">' + '<span class="' + sad1_prty + '">' + sad1_name + '</span>:' + ' ' + sad1_votes + '%' + '</div>';
 
     $('#formatted-st-asmbly-d1-data').append(sad1_data);
 
@@ -135,11 +154,11 @@ $.ajax({
 
 var request = new XMLHttpRequest();
 
-request.open('GET', 'https://res.cloudinary.com/granville-homes/raw/upload/v1540426126/fcrov_data.csv', true);
+request.open('GET', 'https://res.cloudinary.com/granville-homes/raw/upload/v1540948443/city_council_3.json', true);
 request.onload = function () {
 
   if (request.status >= 200 && request.status < 400) {
-    console.log('Connection to FCROV CSV successful!');
+    console.log('Connection to FCROV data successful!');
   } else {
     console.log('Error, no connection.');
   }

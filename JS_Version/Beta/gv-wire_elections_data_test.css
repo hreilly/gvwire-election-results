@@ -1,13 +1,44 @@
 body {
     font-family: sans-serif;
 }
+#live-filter-results {
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    width: 40%;
+    min-width: 300px;
+    height: 30px;
+    border: 1px solid #b2b2b2;
+    border-radius: 4px;
+    font-family: inherit;
+    margin: bottom;
+    padding-left: 10px;
+}
 .Dem {
-    color: blue;
+    color: #2196F3;
 }
 .Rep {
-    color: red;
+    color: #F44336;
 }
-#formatted-msr-data div, #formatted-st-asmbly-d1-data div, #formatted-gov-data div {
+.election-candidate, .ballot-measure {
+    font-weight: bold;
+}
+.election-flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.election-results-group {
+    width: 30%;
+    min-width: 300px;
+    overflow: wrap;
+    padding: 15px;
+    margin: 5px;
+    border: 1px solid #f2f2f2;
+    border-radius: 4px;
+}
+#formatted-st-asmbly-d1-data div, #formatted-gov-data div {
     margin: auto auto 20px auto;
     /*display: flex;*/
 }
@@ -20,3 +51,9 @@ body {
 /*.election-category-header {
     font-weight: bold;
 }*/
+
+@media screen and (max-width: 770px) {
+    .election-results-group {
+        width: 100%;
+    }
+}
