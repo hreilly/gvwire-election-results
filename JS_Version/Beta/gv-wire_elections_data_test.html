@@ -18,30 +18,38 @@
 <body>
 
   <div id="elections-body-container">
-    <h2>Raw Response Data</h2>
+    <!--<h2>Raw Response Data</h2>
     <div id="raw-data"></div>
-    <div id="fresno-county-data"></div>
+    <div id="fresno-county-data"></div>-->
 
     <input id="live-filter-results" type="text" placeholder="Begin typing to filter results...">
 
     <div id="formatted-election-results">
 
-      <h2>Formatted Response Data</h2>
+      <h2 class="election-search-item">Formatted Response Data</h2>
       <hr>
       <div class="election-flex-container">
-        <div id="formatted-gov-data" class="election-results-group"></div>
-        <div id="formatted-st-asmbly-d1-data" class="election-results-group"></div>
+        <div id="formatted-gov-data" class="election-results-group election-search-item"></div>
+        <div id="formatted-sad5-data" class="election-results-group election-search-item"></div>
       </div>
       <hr>
       <div id="formatted-msr-data">
-        <div id="msr-data-header"></div>
+        <div id="msr-data-header" class="election-search-item"></div>
         <div id="msr-data-container" class="election-flex-container"></div>
       </div>
       <hr>
+      <h2 style="text-align: center;" class="election-search-item">FRESNO CITY COUNCIL</h2>
       <div class="election-flex-container">
-        <div id="formatted-city-council-3-data" class="election-results-group"></div>
-        <div id="formatted-city-council-5-data" class="election-results-group"></div>
-        <div id="formatted-city-council-7-data" class="election-results-group"></div>
+        <div id="formatted-city-council-3-data" class="election-results-group election-search-item"></div>
+        <div id="formatted-city-council-5-data" class="election-results-group election-search-item"></div>
+        <div id="formatted-city-council-7-data" class="election-results-group election-search-item"></div>
+      </div>
+      <h2 style="text-align: center;" class="election-search-item">SELECT LOCAL BALLOT MEASURES</h2>
+      <div class="election-flex-container">
+        <div id="formatted-msrA-data" class="election-results-group election-search-item"></div>
+        <div id="formatted-msrO-data" class="election-results-group election-search-item"></div>
+        <div id="formatted-msrP-data" class="election-results-group election-search-item"></div>
+        <div id="formatted-msrQ-data" class="election-results-group election-search-item"></div>
       </div>
 
     </div>

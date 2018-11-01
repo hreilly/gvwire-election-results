@@ -16,7 +16,7 @@
 $(document).ready(function(){
     $("#live-filter-results").on("keyup", function() {
     var value = $(this).val().toLowerCase();
-    $(".election-results-group").filter(function() {
+    $(".election-search-item").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
   });
@@ -80,7 +80,7 @@ $.ajax({
     var msr_name = (msr.Name);
     var msr_yes = (msr.yesPercent);
     var msr_no = (msr.noPercent);
-    var msr_data = '<div class="ballot-measure election-results-group">' + '<h3>Measure ' + msr_num + ': ' + msr_name + '</h3>' +
+    var msr_data = '<div class="ballot-measure election-results-group election-search-item">' + '<h3>Measure ' + msr_num + ': ' + msr_name + '</h3>' +
                    '<div>' + 'Yes:&nbsp;' + msr_yes + '%' + '<br>' +
                    'No:&nbsp;' + msr_no + '%' + '</div>' + '</div>';
 
@@ -118,27 +118,31 @@ $.ajax({
 
 ///////////////////////////////////////////
 
-// State Assembly District 1
+// 
+
+///////////////////////////////////////////
+
+// State Assembly District 5
 
 $.ajax({
-  url: "https://api.sos.ca.gov/returns/state-assembly/district/1"
+  url: "https://api.sos.ca.gov/returns/state-assembly/district/5"
 }).done(function(resp){
   var resp_string = JSON.stringify(resp);
   $('#raw-data').append(resp_string);
-  var st_asmbly_d1_obj = resp.candidates;
-  var st_asmbly_d1_header = '<div class="election-category-header">' + '<h3>' + resp.raceTitle + '</h3>' +
+  var st_asmbly_d5_obj = resp.candidates;
+  var st_asmbly_d5_header = '<div class="election-category-header">' + '<h3>' + resp.raceTitle + '</h3>' +
                             resp.Reporting + '<br>' +
                             resp.ReportingTime + '</div>';
 
-  $('#formatted-st-asmbly-d1-data').append(st_asmbly_d1_header);
+  $('#formatted-sad5-data').append(st_asmbly_d5_header);
 
-  $.each( st_asmbly_d1_obj, function( key, sad1 ){
-    var sad1_name = (sad1.Name);
-    var sad1_prty = (sad1.Party);
-    var sad1_votes = (sad1.Percent);
-    var sad1_data = '<div class="election-candidate">' + '<span class="' + sad1_prty + '">' + sad1_name + '</span>:' + ' ' + sad1_votes + '%' + '</div>';
+  $.each( st_asmbly_d5_obj, function( key, sad5 ){
+    var sad5_name = (sad5.Name);
+    var sad5_prty = (sad5.Party);
+    var sad5_votes = (sad5.Percent);
+    var sad5_data = '<div class="election-candidate">' + '<span class="' + sad5_prty + '">' + sad5_name + '</span>:' + ' ' + sad5_votes + '%' + '</div>';
 
-    $('#formatted-st-asmbly-d1-data').append(sad1_data);
+    $('#formatted-sad5-data').append(sad5_data);
 
   });
 
@@ -148,7 +152,7 @@ $.ajax({
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// This script pulls raw election data from the Fresno County Registrar of Voters and prints it. JSON is refreshed every 10 minutes during election reporting.
+// This script pulls raw election data parsed from the Fresno County Registrar of Voters and prints it. JSON is refreshed every 10 minutes during election reporting.
 
 ////////////////////////////////////////////////////////////////////////////////////
 
@@ -203,9 +207,14 @@ $.ajax({
   $.each( city_council_5, function( key, cc5 ){
     var cc5_index = (cc5.index);
     var cc5_item = (cc5.item);
+    var cc5_name = cc5_item.toLowerCase();
     var cc5_votes = (cc5.votePrcnt);
     var cc5_num = (cc5.voteNum);
-    var cc5_data = '<div class="index-item-' + cc5_index + '">' + '<span>' + cc5_item + '</span>' + (cc5_num != false ? ': ' : "") + ' ' + (cc5_votes != false ? cc5_votes + ' | ' : "") + cc5_num + '</div>';
+    var cc5_data = '<div class="index-item-' + cc5_index + '">' +
+                   '<span class="item-name">' + cc5_name + '</span>' +
+                   (cc5_num != false ? ': ' : "") + ' ' +
+                   (cc5_votes != false ? cc5_votes + ' | ' : "") +
+                   cc5_num + '</div>';
 
     $('#formatted-city-council-5-data').append(cc5_data);
 
@@ -224,10 +233,11 @@ $.ajax({
   $.each( city_council_7, function( key, cc7 ){
     var cc7_index = (cc7.index);
     var cc7_item = (cc7.item);
+    var cc7_name = cc7_item.toLowerCase();
     var cc7_votes = (cc7.votePrcnt);
     var cc7_num = (cc7.voteNum);
     var cc7_data = '<div class="index-item-' + cc7_index + '">' +
-                   '<span>' + cc7_item + '</span>' + 
+                   '<span class="item-name">' + cc7_name + '</span>' + 
                    (cc7_num != false ? ': ' : "") + ' ' + 
                    (cc7_votes != false ? cc7_votes + ' | ' : "") + 
                    cc7_num + '</div>';
