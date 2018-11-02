@@ -1,0 +1,1 @@
+{"schema": {"fields":[{"name":"index","type":"integer"},{"name":0,"type":"string"},{"name":1,"type":"string"}],"primaryKey":["index"],"pandas_version":"0.20.0"}, "data": [{"index":0,"0":"Registered Voters 438782 - Cards Cast 136388 31.08%","1":"Num. Report Precinct 481 - Num. Reporting 481 100.00%"}]}

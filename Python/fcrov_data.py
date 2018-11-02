@@ -65,7 +65,7 @@ while True:
         
         ########## Begin processing response from HTTP request
         
-        # Create filter with SoupStrainer to limit parsing to main div
+        # Create filter with SoupStrainer to limit parsing to main div | This id may change, watch out
         res_filter = SoupStrainer('div',{'id': 'widget_328_7137_5329'})
         
         # Grab the strained soup
@@ -111,7 +111,8 @@ while True:
         dfs = pd.read_html(str(soup), header=None)
         
         # -------------------------- Define relevant data frames
-        overview_data = dfs[3]
+        time_data = dfs[1]
+        overview_data = dfs[2]
         
         # City Council races
         cc3 = dfs[64]
@@ -170,8 +171,10 @@ while True:
         
         # Var for naming cols
         new_cols = {0:'item', 1:'partyPref', 2:'voteNum', 3:'votePrcnt'}
+        time_cols = {2:'time'}
         
         # Rename columns in single data frames
+        time_data.rename(columns = time_cols, inplace = True)
         cc3.rename(columns = new_cols, inplace = True)
         cc5.rename(columns = new_cols, inplace = True)
         cc7.rename(columns = new_cols, inplace = True)
@@ -256,6 +259,8 @@ while True:
         try:
             
             # Servin' it up, Gary's way
+            time_data.to_json('./data/time.json', orient='table', index=True)
+            overview_data.to_json('./data/overview.json', orient='table', index=True)
             cc3.to_json('./data/cc3.json', orient='table', index=True)
             cc5.to_json('./data/cc5.json', orient='table', index=True)
             cc7.to_json('./data/cc7.json', orient='table', index=True)

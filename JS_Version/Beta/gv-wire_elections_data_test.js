@@ -786,10 +786,55 @@ request.send();
 // Parse JSON data with JQuery
 ///////////////////////////////////////////
 
+// Time Data
+
+$.ajax({
+  url: '/python/data/time.json'
+}).done(function(resp){
+  var resp_string = JSON.stringify(resp);
+  $('#fresno-county-data').append(resp_string);
+  var fresnoTime = resp.data;
+  $.each( fresnoTime, function( key, fresnoTime ){
+    var fresnoTime_time = (fresnoTime.time);
+
+    $('#fresno-county-time').append(fresnoTime_time);
+
+  });
+
+});
+
+// Overview Data
+
+$.ajax({
+  url: '/python/data/overview.json'
+}).done(function(resp){
+  //var resp_string = JSON.stringify(resp);
+  //$('#fresno-county-data').append(resp_string);
+  var city_council_3 = resp.data;
+  $.each( city_council_3, function( key, cc3 ){
+    var cc3_index = (cc3.index);
+    var cc3_item = (cc3.item);
+    var cc3_name = cc3_item.toLowerCase();
+    var cc3_votes = (cc3.votePrcnt);
+    var cc3_num = (cc3.voteNum);
+    var cc3_data = '<div class="fresno-item index-item-' + cc3_index + '">' +
+                   '<span class="item-name">' + cc3_name + '</span>' +
+                   (cc3_num != false ? ': ' : "") + ' ' +
+                   (cc3_votes != false ? cc3_votes + ' &nbsp;|&nbsp; ' : "") +
+                   cc3_num + '</div>';
+
+    $('#formatted-city-council-3-data').append(cc3_data);
+
+  });
+
+});
+
+///////////////////////////////////////////
+
 // City Council District 3
 
 $.ajax({
-  url: 'https://res.cloudinary.com/granville-homes/raw/upload/v1541017376/cc3.json'
+  url: '/python/data/cc3.json'
 }).done(function(resp){
   //var resp_string = JSON.stringify(resp);
   //$('#fresno-county-data').append(resp_string);
