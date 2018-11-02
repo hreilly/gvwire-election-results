@@ -18,38 +18,70 @@
 <body>
 
   <div id="elections-body-container">
-    <!--<h2>Raw Response Data</h2>
+    <h2>Raw Response Data</h2>
     <div id="raw-data"></div>
-    <div id="fresno-county-data"></div>-->
+    <!--<div id="fresno-county-data"></div>-->
 
     <input id="live-filter-results" type="text" placeholder="Begin typing to filter results...">
 
     <div id="formatted-election-results">
 
-      <h2 class="election-search-item">Formatted Response Data</h2>
+      <h2 class="srchbl">Formatted Response Data</h2>
       <hr>
+      <div class="election-category-header">
+        <h2 class="srchbl">Statewide Elections</h2>
+        <p id="statewide-reporting-content"></p>
+      </div>
       <div class="election-flex-container">
-        <div id="formatted-gov-data" class="election-results-group election-search-item"></div>
-        <div id="formatted-sad5-data" class="election-results-group election-search-item"></div>
+        <div id="formatted-gov-data" class="election-results-group srchbl"></div>
+        <div id="formatted-ltgov-data" class="election-results-group srchbl"></div>
+        <div id="formatted-sos-data" class="election-results-group srchbl"></div>
+        <div id="formatted-attGen-data" class="election-results-group srchbl"></div>
+        <div id="formatted-trsr-data" class="election-results-group srchbl"></div>
+        <div id="formatted-cont-data" class="election-results-group srchbl"></div>
+        <div id="formatted-sopi-data" class="election-results-group srchbl"></div>
+        <div id="formatted-insCom-data" class="election-results-group srchbl"></div>
+        <div id="formatted-ussen-data" class="election-results-group srchbl"></div>
+      </div>
+      <hr>
+      <div class="election-category-header">
+        <h2 class="srchbl">Districtwide - Central Valley Area</h2>
+      </div>
+      <div class="election-flex-container">
+        <div id="formatted-usca4-data" class="election-results-group srchbl"></div>
+        <div id="formatted-usca10-data" class="election-results-group srchbl"></div>
+        <div id="formatted-usca16-data" class="election-results-group srchbl"></div>
+        <div id="formatted-usca21-data" class="election-results-group srchbl"></div>
+        <div id="formatted-usca22-data" class="election-results-group srchbl"></div>
+        <div id="formatted-usca23-data" class="election-results-group srchbl"></div>
+        <div id="formatted-casen8-data" class="election-results-group srchbl"></div>
+        <div id="formatted-casen12-data" class="election-results-group srchbl"></div>
+        <div id="formatted-casen14-data" class="election-results-group srchbl"></div>
+        <div id="formatted-sad5-data" class="election-results-group srchbl"></div>
+        <div id="formatted-sad21-data" class="election-results-group srchbl"></div>
+        <div id="formatted-sad23-data" class="election-results-group srchbl"></div>
+        <div id="formatted-sad26-data" class="election-results-group srchbl"></div>
+        <div id="formatted-sad31-data" class="election-results-group srchbl"></div>
+        <div id="formatted-sad32-data" class="election-results-group srchbl"></div>
       </div>
       <hr>
       <div id="formatted-msr-data">
-        <div id="msr-data-header" class="election-search-item"></div>
+        <div id="msr-data-header" class="srchbl"></div>
         <div id="msr-data-container" class="election-flex-container"></div>
       </div>
       <hr>
-      <h2 style="text-align: center;" class="election-search-item">FRESNO CITY COUNCIL</h2>
+      <h2 style="text-align: center;" class="srchbl">FRESNO CITY COUNCIL</h2>
       <div class="election-flex-container">
-        <div id="formatted-city-council-3-data" class="election-results-group election-search-item"></div>
-        <div id="formatted-city-council-5-data" class="election-results-group election-search-item"></div>
-        <div id="formatted-city-council-7-data" class="election-results-group election-search-item"></div>
+        <div id="formatted-city-council-3-data" class="election-results-group srchbl fresno-data"></div>
+        <div id="formatted-city-council-5-data" class="election-results-group srchbl fresno-data"></div>
+        <div id="formatted-city-council-7-data" class="election-results-group srchbl fresno-data"></div>
       </div>
-      <h2 style="text-align: center;" class="election-search-item">SELECT LOCAL BALLOT MEASURES</h2>
+      <h2 style="text-align: center;" class="srchbl">CITY of FRESNO BALLOT MEASURES</h2>
       <div class="election-flex-container">
-        <div id="formatted-msrA-data" class="election-results-group election-search-item"></div>
-        <div id="formatted-msrO-data" class="election-results-group election-search-item"></div>
-        <div id="formatted-msrP-data" class="election-results-group election-search-item"></div>
-        <div id="formatted-msrQ-data" class="election-results-group election-search-item"></div>
+        <div id="formatted-msrA-data" class="election-results-group srchbl fresno-data"></div>
+        <div id="formatted-msrO-data" class="election-results-group srchbl fresno-data"></div>
+        <div id="formatted-msrP-data" class="election-results-group srchbl fresno-data"></div>
+        <div id="formatted-msrQ-data" class="election-results-group srchbl fresno-data"></div>
       </div>
 
     </div>
