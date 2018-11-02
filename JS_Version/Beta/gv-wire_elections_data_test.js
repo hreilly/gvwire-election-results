@@ -58,10 +58,10 @@ $.ajax({
 }).done(function(resp) {
 
   // Stringify JSON data and assign to variable
-  var resp_string = JSON.stringify(resp);
+  //var resp_string = JSON.stringify(resp);
 
   // Print raw data to the specified div id
-  $('#raw-data').append(resp_string);
+  //$('#raw-data').append(resp_string);
 
   // Create array from the specified response key (using [] if the key uses a hyphen)
   var msr_obj = resp['ballot-measures'];
@@ -262,8 +262,8 @@ $.ajax({
 $.ajax({
   url: "https://api.sos.ca.gov/returns/superintendent-of-public-instruction"
 }).done(function(resp) {
-  var resp_string = JSON.stringify(resp);
-  $('#raw-data').append(resp_string);
+  //var resp_string = JSON.stringify(resp);
+  //$('#raw-data').append(resp_string);
 
   var sopi_header = '<div class="election-overview">' + '<div class="election-title">' + resp.raceTitle + '</div>' + '</div>';
   $('#formatted-sopi-data').append(sopi_header);
@@ -347,8 +347,8 @@ $.ajax({
 $.ajax({
   url: "https://api.sos.ca.gov/returns/us-rep/district/4"
 }).done(function(resp){
-  //var resp_string = JSON.stringify(resp);
-  //$('#raw-data').append(resp_string);
+  var resp_string = JSON.stringify(resp);
+  $('#raw-data').append(resp_string);
   var usca4_obj = resp.candidates;
   var usca4_header = '<div class="election-overview">' + '<div class="election-title">' + resp.raceTitle + '</div>' +
                             '<div class="election-details">' + resp.Reporting + '<br>' +
@@ -375,8 +375,8 @@ $.ajax({
 $.ajax({
   url: "https://api.sos.ca.gov/returns/us-rep/district/10"
 }).done(function(resp){
-  //var resp_string = JSON.stringify(resp);
-  //$('#raw-data').append(resp_string);
+  var resp_string = JSON.stringify(resp);
+  $('#raw-data').append(resp_string);
   var usca10_obj = resp.candidates;
   var usca10_header = '<div class="election-overview">' + '<div class="election-title">' + resp.raceTitle + '</div>' +
                             '<div class="election-details">' + resp.Reporting + '<br>' +
@@ -768,20 +768,6 @@ $.ajax({
 
 ////////////////////////////////////////////////////////////////////////////////////
 
-var request = new XMLHttpRequest();
-
-request.open('GET', 'https://res.cloudinary.com/granville-homes/raw/upload/v1541017376/cc3.json', true);
-request.onload = function () {
-
-  if (request.status >= 200 && request.status < 400) {
-    console.log('Connection to FCROV data successful!');
-  } else {
-    console.log('Error, no connection.');
-  }
-}
-
-request.send();
-
 ///////////////////////////////////////////
 // Parse JSON data with JQuery
 ///////////////////////////////////////////
@@ -791,8 +777,8 @@ request.send();
 $.ajax({
   url: '/python/data/time.json'
 }).done(function(resp){
-  var resp_string = JSON.stringify(resp);
-  $('#fresno-county-data').append(resp_string);
+  //var resp_string = JSON.stringify(resp);
+  //$('#fresno-county-data').append(resp_string);
   var fresnoTime = resp.data;
   $.each( fresnoTime, function( key, fresnoTime ){
     var fresnoTime_time = (fresnoTime.time);
@@ -810,20 +796,13 @@ $.ajax({
 }).done(function(resp){
   //var resp_string = JSON.stringify(resp);
   //$('#fresno-county-data').append(resp_string);
-  var city_council_3 = resp.data;
-  $.each( city_council_3, function( key, cc3 ){
-    var cc3_index = (cc3.index);
-    var cc3_item = (cc3.item);
-    var cc3_name = cc3_item.toLowerCase();
-    var cc3_votes = (cc3.votePrcnt);
-    var cc3_num = (cc3.voteNum);
-    var cc3_data = '<div class="fresno-item index-item-' + cc3_index + '">' +
-                   '<span class="item-name">' + cc3_name + '</span>' +
-                   (cc3_num != false ? ': ' : "") + ' ' +
-                   (cc3_votes != false ? cc3_votes + ' &nbsp;|&nbsp; ' : "") +
-                   cc3_num + '</div>';
+  var overview = resp.data;
+  $.each( overview, function( key, overview ){
+    var overview_voters = (overview.voters);
+    var overview_precincts = (overview.precincts);
+    var overview_data = overview_voters + '<br>' + overview_precincts;
 
-    $('#formatted-city-council-3-data').append(cc3_data);
+    $('#fresno-county-overview').append(overview_data);
 
   });
 
@@ -862,7 +841,7 @@ $.ajax({
 // City Council District 5
 
 $.ajax({
-  url: 'https://res.cloudinary.com/granville-homes/raw/upload/v1541017375/cc5.json'
+  url: '/python/data/cc5.json'
 }).done(function(resp){
   //var resp_string = JSON.stringify(resp);
   //$('#fresno-county-data').append(resp_string);
@@ -890,7 +869,7 @@ $.ajax({
 // City Council District 7
 
 $.ajax({
-  url: 'https://res.cloudinary.com/granville-homes/raw/upload/v1541017375/cc7.json'
+  url: '/python/data/cc7.json'
 }).done(function(resp){
   //var resp_string = JSON.stringify(resp);
   //$('#fresno-county-data').append(resp_string);

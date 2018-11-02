@@ -1,1 +1,1 @@
-{"schema": {"fields":[{"name":"index","type":"integer"},{"name":0,"type":"number"},{"name":1,"type":"number"},{"name":"time","type":"string"}],"primaryKey":["index"],"pandas_version":"0.20.0"}, "data": [{"index":0,"0":null,"1":null,"time":"06\/26\/18  14:38:06"}]}
+{"schema": {"fields":[{"name":"index","type":"integer"},{"name":0,"type":"number"},{"name":1,"type":"number"},{"name":"time","type":"string"}],"primaryKey":["index"],"pandas_version":"0.20.0"}, "data": [{"index":0,"0":null,"1":null,"time":"10\/31\/18  13:02:59"}]}

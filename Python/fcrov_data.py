@@ -24,7 +24,7 @@ while True:
     try:
         
         # Initial request to Fresno County site
-        res = requests.get("https://www.co.fresno.ca.us/departments/county-clerk-registrar-of-voters/election-information/election-results/results-for-june-5-2018-statewide-primary-election", allow_redirects=False, timeout=(10, 30))
+        res = requests.get("https://www.co.fresno.ca.us/departments/county-clerk-registrar-of-voters/election-information/election-results/2018-november-general-election-results", allow_redirects=False, timeout=(10, 30))
         
         # Check status
         res.raise_for_status()
@@ -66,7 +66,7 @@ while True:
         ########## Begin processing response from HTTP request
         
         # Create filter with SoupStrainer to limit parsing to main div | This id may change, watch out
-        res_filter = SoupStrainer('div',{'id': 'widget_328_7137_5329'})
+        res_filter = SoupStrainer('div',{'id': 'widget_492_7680_5755'})
         
         # Grab the strained soup
         soup = BeautifulSoup(res.content,'lxml',parse_only=res_filter)
@@ -102,7 +102,7 @@ while True:
                 del(tag[attribute])
         
         # Print the final result of all filters and functions (disable after data identification)
-        # with open("../data/fcrov_data.html", "w") as file:
+        # with open("./data/fcrov_data.html", "w") as file:
             # file.write(soup.prettify())
         
         # ----------------------------------------------- End Soup Functions, Begin Pandas
@@ -115,66 +115,77 @@ while True:
         overview_data = dfs[2]
         
         # City Council races
-        cc3 = dfs[64]
-        cc5 = dfs[66]
-        cc7 = dfs[68]
+        cc3 = dfs[154]
+        cc5 = dfs[156]
+        cc7 = dfs[158]
         
         # Ballot measures
-        msrA = dfs[4]
-        msrO = dfs[6]
-        msrP = dfs[8]
-        msrQ = dfs[10]
+        msrA = dfs[246]
+        msrO = dfs[248]
+        msrP = dfs[250]
+        msrQ = dfs[252]
         
         # Controller/Treasurer
-        fcTrsr = dfs[12]
+        fcTrsr = dfs[138]
         
         # Fresno Unified School District
-        fusd1 = dfs[14]
-        fusd3 = dfs[16]
-        fusd4 = dfs[18]
-        fusd7 = dfs[20]
+        fusd1 = dfs[90]
+        fusd3 = dfs[92]
+        fusd4 = dfs[94]
+        fusd7 = dfs[96]
         
         # Central Unified School District
-        cenusd1 = dfs[22]
-        cenusd2 = dfs[24]
-        cenusd4 = dfs[26]
-        cenusd7 = dfs[28]
+        cenusd1 = dfs[66]
+        cenusd2 = dfs[68]
+        cenusd4 = dfs[70]
+        cenusd7 = dfs[72]
         
         # Clovis Unified School District
         
-        cusd1 = dfs[30]
-        cusd3 = dfs[32]
+        cusd1 = dfs[74]
+        cusd3 = dfs[76]
+        
+        # Fresno County Board of Education
+        
+        fcboe1 = dfs[58]
+        
+        # SCCCD
+        
+        scccd4 = dfs[62]
+        scccd5 = dfs[64]
         
         # ----------------------------------------------- End initial df defs
         
         # -------------------------- Season that soup
         
         # Drop useless rows
-        cc3 = cc3.drop(cc3.index[[1,4,5,7,8,9]])
-        cc5 = cc5.drop(cc5.index[[1,4,5,7,8,9]])
-        cc7 = cc7.drop(cc7.index[[1,4,5,7,8,9]])
-        msrA = msrA.drop(msrA.index[[1,4,5,7,8,9]])
-        msrO = msrO.drop(msrO.index[[1,4,5,7,8,9]])
-        msrP = msrP.drop(msrP.index[[1,4,5,7,8,9]])
-        msrQ = msrQ.drop(msrQ.index[[1,4,5,7,8,9]])
-        fcTrsr = fcTrsr.drop(fcTrsr.index[[1,4,5,7,8,9]])
-        fusd1 = fusd1.drop(fusd1.index[[1,4,5,7,8,9]])
-        fusd3 = fusd3.drop(fusd3.index[[1,4,5,7,8,9]])
-        fusd4 = fusd4.drop(fusd4.index[[1,4,5,7,8,9]])
-        fusd7 = fusd7.drop(fusd7.index[[1,4,5,7,8,9]])
-        cenusd1 = cenusd1.drop(cenusd1.index[[1,4,5,7,8,9]])
-        cenusd2 = cenusd2.drop(cenusd2.index[[1,4,5,7,8,9]])
-        cenusd4 = cenusd4.drop(cenusd4.index[[1,4,5,7,8,9]])
-        cenusd7 = cenusd7.drop(cenusd7.index[[1,4,5,7,8,9]])
-        cusd1 = cusd1.drop(cusd1.index[[1,4,5,7,8,9]])
-        cusd3 = cusd3.drop(cusd3.index[[1,4,5,7,8,9]])
+        cc3 = cc3.drop(cc3.index[[1,4,5,7]])
+        cc5 = cc5.drop(cc5.index[[1,4,5,7]])
+        cc7 = cc7.drop(cc7.index[[1,4,5,7]])
+        msrA = msrA.drop(msrA.index[[1,4,5,7]])
+        msrO = msrO.drop(msrO.index[[1,4,5,7]])
+        msrP = msrP.drop(msrP.index[[1,4,5,7]])
+        msrQ = msrQ.drop(msrQ.index[[1,4,5,7]])
+        fcTrsr = fcTrsr.drop(fcTrsr.index[[1,4,5,7]])
+        fusd1 = fusd1.drop(fusd1.index[[1,4,5,7]])
+        fusd3 = fusd3.drop(fusd3.index[[1,4,5,7]])
+        fusd4 = fusd4.drop(fusd4.index[[1,4,5,7]])
+        fusd7 = fusd7.drop(fusd7.index[[1,4,5,7]])
+        cenusd1 = cenusd1.drop(cenusd1.index[[1,4,5,7]])
+        cenusd2 = cenusd2.drop(cenusd2.index[[1,4,5,7]])
+        cenusd4 = cenusd4.drop(cenusd4.index[[1,4,5,7]])
+        cenusd7 = cenusd7.drop(cenusd7.index[[1,4,5,7]])
+        cusd1 = cusd1.drop(cusd1.index[[1,4,5,7]])
+        cusd3 = cusd3.drop(cusd3.index[[1,4,5,7]])
         
         # Var for naming cols
         new_cols = {0:'item', 1:'partyPref', 2:'voteNum', 3:'votePrcnt'}
         time_cols = {2:'time'}
+        overview_cols = {0:'voters', 1:'precincts'}
         
         # Rename columns in single data frames
         time_data.rename(columns = time_cols, inplace = True)
+        overview_data.rename(columns = overview_cols, inplace = True)
         cc3.rename(columns = new_cols, inplace = True)
         cc5.rename(columns = new_cols, inplace = True)
         cc7.rename(columns = new_cols, inplace = True)
