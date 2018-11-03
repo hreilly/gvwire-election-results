@@ -177,6 +177,9 @@ while True:
         cenusd7 = cenusd7.drop(cenusd7.index[[1,4,5,7]])
         cusd1 = cusd1.drop(cusd1.index[[1,4,5,7]])
         cusd3 = cusd3.drop(cusd3.index[[1,4,5,7]])
+        fcboe1 = fcboe1.drop(fcboe1.index[[1,4,5,7]])
+        scccd4 = scccd4.drop(scccd4.index[[1,4,5,7]])
+        scccd5 = scccd5.drop(scccd5.index[[1,4,5,7]])
         
         # Var for naming cols
         new_cols = {0:'item', 1:'partyPref', 2:'voteNum', 3:'votePrcnt'}
@@ -204,6 +207,9 @@ while True:
         cenusd7.rename(columns = new_cols, inplace = True)
         cusd1.rename(columns = new_cols, inplace = True)
         cusd3.rename(columns = new_cols, inplace = True)
+        fcboe1.rename(columns = new_cols, inplace = True)
+        scccd4.rename(columns = new_cols, inplace = True)
+        scccd5.rename(columns = new_cols, inplace = True)
         
         # Delete empty columns
         cc3 = cc3.dropna(axis=1, how='all', thresh=None)
@@ -224,6 +230,9 @@ while True:
         cenusd7 = cenusd7.dropna(axis=1, how='all', thresh=None)
         cusd1 = cusd1.dropna(axis=1, how='all', thresh=None)
         cusd3 = cusd3.dropna(axis=1, how='all', thresh=None)
+        fcboe1 = fcboe1.dropna(axis=1, how='all', thresh=None)
+        scccd4 = scccd4.dropna(axis=1, how='all', thresh=None)
+        scccd5 = scccd5.dropna(axis=1, how='all', thresh=None)
         
         # Delete empty rows
         cc3 = cc3.dropna(axis=0, how='all', thresh=None)
@@ -244,6 +253,9 @@ while True:
         cenusd7 = cenusd7.dropna(axis=0, how='all', thresh=None)
         cusd1 = cusd1.dropna(axis=0, how='all', thresh=None)
         cusd3 = cusd3.dropna(axis=0, how='all', thresh=None)
+        fcboe1 = fcboe1.dropna(axis=0, how='all', thresh=None)
+        scccd4 = scccd4.dropna(axis=0, how='all', thresh=None)
+        scccd5 = scccd5.dropna(axis=0, how='all', thresh=None)
         
         # Remove NaNs from data
         cc3 = cc3.fillna('')
@@ -264,6 +276,9 @@ while True:
         cenusd7 = cenusd7.fillna('')
         cusd1 = cusd1.fillna('')
         cusd3 = cusd3.fillna('')
+        fcboe1 = fcboe1.fillna('')
+        scccd4 = scccd4.fillna('')
+        scccd5 = scccd5.fillna('')
         
         # -------------------------- Write data to files
         
@@ -290,6 +305,9 @@ while True:
             cenusd7.to_json('./data/cenusd7.json', orient='table', index=True)
             cusd1.to_json('./data/cusd1.json', orient='table', index=True)
             cusd3.to_json('./data/cusd3.json', orient='table', index=True)
+            fcboe1.to_json('./data/fcboe1.json', orient='table', index=True)
+            scccd4.to_json('./data/scccd4.json', orient='table', index=True)
+            scccd5.to_json('./data/scccd5.json', orient='table', index=True)
             
         except DataError:
             

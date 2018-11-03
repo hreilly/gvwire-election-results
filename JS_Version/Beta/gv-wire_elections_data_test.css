@@ -10,19 +10,59 @@ body {
     max-width: 1280px;
     margin: auto;
 }
+#elections-body-container hr {
+    border: 1px solid #cfcfcf;
+}
+
+#elections-page-header {
+    text-align: center;
+    max-width: 720px;
+    margin: auto;
+}
+
+/* Two-color page divider */
+.flex-divider {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 720px;
+    margin: auto;
+}
+.flex-divider-item:first-of-type {
+    margin-right: 2px;
+    height: 2px;
+    width: 48%;
+    background-color: #2196F3;
+}
+.flex-divider-item:last-of-type {
+    margin-left: 2px;
+    height: 2px;
+    width: 48%;
+    background-color: #F44336;
+}
+
 #live-filter-results {
     display: block;
-    margin: auto;
-    margin-top: 30px;
-    margin-bottom: 15px;
+    margin: 40px auto 60px auto;
     width: 40%;
     min-width: 300px;
     height: 30px;
     border: 1px solid #b2b2b2;
     border-radius: 4px;
     font-family: inherit;
-    margin: bottom;
     padding-left: 10px;
+}
+.srchbl {
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+.tiny-divider {
+    max-width: 300px;
+}
+
+.election-result-details {
+    text-align: center;
+    margin: 20px auto 40px auto;
 }
 .election-candidate, .ballot-measure {
     font-weight: bold;
@@ -34,6 +74,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding-bottom: 40px;
 }
 h3 {
     margin-top: 0;
@@ -44,20 +85,25 @@ h3 {
     overflow: wrap;
     padding: 30px 30px 45px 30px;
     margin: 5px;
-    border: 1px solid #f2f2f2;
+    border: 1px solid #dfdfdf;
     border-radius: 4px;
-    background-color: #fefefe;
+    background-color: #f8f8f8;
 }
 .election-category-header {
     text-align: center;
+    margin: auto;
+    padding-top: 10px;
+    background-color: #ffffff;
+    box-shadow: 0px -5px 3px -3px rgba(0,0,0,.15);
+
 }
 .election-category-header h2 {
     text-transform: uppercase;
 }
-.election-title, .election-details, .election-candidate, .index-item-0 {
+.election-title, .election-details, .election-candidate, .index-item-0, .ballot-index-item-0 {
     margin: 0 auto 20px auto;
 }
-.election-title, .index-item-0 {
+.election-title, .index-item-0, .ballot-index-item-0 {
     font-weight: bold;
     font-size: 1.17em;
 }
@@ -67,10 +113,22 @@ h3 {
 .fresno-item:nth-of-type(n+5) {
     font-weight: bold;
 }
+.ballot-measure .yesPercent::before {
+    content: 'Yes: ';
+}
+.ballot-measure .noPercent::before {
+    content: 'No: ';
+}
+
+/* Link stylin */
+.elections-page-link {
+    color: #2196F3;
+    text-decoration: none;
+}
 
 /* Leader banner */
-.election-results-group .election-candidate:nth-of-type(2)/*, .index-item-11*/ {
-    background-color: #fafafa;
+.election-results-group .election-candidate:nth-of-type(2), .index-item-8 {
+    background-color: #fefefe;
     padding: 5px 0px 5px 10px;
     margin: 0 auto 15px auto;
     border-left: 3px solid #ffd54f;
@@ -78,7 +136,7 @@ h3 {
     border-radius: 3px;
 }
 .yesPercent {
-    background-color: #fafafa;
+    background-color: #fefefe;
     padding: 5px 0px 5px 10px;
     margin: 0 auto 15px auto;
     border-left: 3px solid #81c784;
@@ -86,12 +144,17 @@ h3 {
     border-radius: 3px;
 }
 .noPercent {
-    background-color: #fafafa;
+    background-color: #fefefe;
     padding: 5px 0px 5px 10px;
     margin: 0 auto 15px auto;
     border-left: 3px solid #e57373;
     box-shadow: 1px 1px 2px rgba(0,0,0,.1);
     border-radius: 3px;
+}
+
+.fresno-county-disclaimer::after {
+    content: '*Results for Fresno County precincts only.';
+    font-style: italic;
 }
 
 @media screen and (max-width: 770px) {
@@ -134,6 +197,63 @@ h3 {
 
 /* Array value-specific styling for Fresno County data */
 
-.index-item-6 {
+.index-item-6, .ballot-index-item-6 {
     padding-bottom: 20px;
+}
+
+/* AJAX page reload modal */
+
+.elections-ajax-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('/elections-ajax-loader.gif') 
+                50% 50% 
+                no-repeat;
+}
+body.ajax-loading .elections-ajax-modal {
+    overflow: hidden;   
+}
+body.ajax-loading .elections-ajax-modal {
+    display: block;
+}
+
+/* Fade content */
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}  
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+/* Bear flex divider */
+.elections-bear-divider {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    width: 100%;
+}
+.bear-flex-item:first-of-type {
+    margin: auto 4px auto auto;
+    height: 2px;
+    width: 29%;
+    background-color: #2196F3;
+}
+.bear-flex-item img {
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+}
+.bear-flex-item:last-of-type {
+    margin: auto auto auto 2px;
+    height: 2px;
+    width: 30%;
+    background-color: #F44336;
 }

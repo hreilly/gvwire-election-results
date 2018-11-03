@@ -19,22 +19,46 @@
 
   <div id="elections-body-container">
     <!-- Enable this section along with desired JSON stringify functions in JS to view raw JSON data for any race -->
-    <h2>Raw Response Data</h2>
+    <!--<h2>Raw Response Data</h2>
     <div id="raw-data"></div>
-    <div id="fresno-county-data"></div>
+    <div id="fresno-county-data"></div>-->
+
+    <div id="elections-page-header">
+      <h1>2018 GENERAL ELECTION RESULTS</h1>
+      <div class="flex-divider">
+        <div class="flex-divider-item"></div>
+        <div class="flex-divider-item"></div>
+      </div>
+      <p style="font-style: italic;">Election night results are semifinal and should not be considered official. <strong>All candidate rankings are dependent on current vote counts and do not constitute any kind of ruling on the outcome.</strong></p>
+      <div class="flex-divider tiny-divider">
+        <div class="flex-divider-item"></div>
+        <div class="flex-divider-item"></div>
+      </div>
+      <p style="font-style: italic;">Statewide data is reported from the <a href="https://vote.sos.ca.gov/" target="_blank" class="elections-page-link">California Secretary of State</a>.<br>Fresno County data is reported from the <a href="https://www.co.fresno.ca.us/departments/county-clerk-registrar-of-voters/election-information/election-results" target="_blank" class="elections-page-link">Registrar of Voters</a>.</p>
+    </div>
     
     <div id="election-search-header">
       <input id="live-filter-results" type="text" placeholder="Begin typing to filter results...">
-      <hr>
     </div>
 
     <div id="formatted-election-results">
+
       <div class="elections-outer-wrapper">
         <div class="election-category-header">
-          <h2 class="srchbl">Statewide Elections</h2>
-          <p id="statewide-reporting-content"></p>
+          <h1 style="text-align: center;">CA SECRETARY of STATE RESULTS</h1>
         </div>
-        <div class="election-flex-container">
+        <div class="flex-divider">
+          <div class="flex-divider-item"></div>
+          <div class="flex-divider-item"></div>
+        </div>
+        <p class="election-result-details" id="statewide-reporting-content"></p>
+      </div>
+
+      <div id="statewide-elections" class="elections-outer-wrapper">
+        <div class="election-category-header srchbl">
+          <h2 class="srchbl">Statewide Elections</h2>
+        </div>
+        <div class="election-flex-container srchbl">
           <div id="formatted-gov-data" class="election-results-group srchbl"></div>
           <div id="formatted-ltgov-data" class="election-results-group srchbl"></div>
           <div id="formatted-sos-data" class="election-results-group srchbl"></div>
@@ -45,22 +69,34 @@
           <div id="formatted-insCom-data" class="election-results-group srchbl"></div>
           <div id="formatted-ussen-data" class="election-results-group srchbl"></div>
         </div>
-        <hr>
       </div>
-      <div class="elections-outer-wrapper">
-        <div class="election-category-header">
+
+      <div class="elections-bear-divider">
+        <div class="bear-flex-item"></div>
+        <div class="bear-flex-item">
+          <img src="/california_bear_divided-01.png">
+        </div>
+        <div class="bear-flex-item"></div>
+      </div>
+
+      <div id="districtwide-elections" class="elections-outer-wrapper">
+        <div class="election-category-header srchbl">
           <h2 class="srchbl">Districtwide - Central Valley Area</h2>
         </div>
-        <div class="election-flex-container">
+        <div class="election-flex-container srchbl">
           <div id="formatted-usca4-data" class="election-results-group srchbl"></div>
           <div id="formatted-usca10-data" class="election-results-group srchbl"></div>
           <div id="formatted-usca16-data" class="election-results-group srchbl"></div>
           <div id="formatted-usca21-data" class="election-results-group srchbl"></div>
           <div id="formatted-usca22-data" class="election-results-group srchbl"></div>
           <div id="formatted-usca23-data" class="election-results-group srchbl"></div>
+        </div>
+        <div class="election-flex-container srchbl">
           <div id="formatted-casen8-data" class="election-results-group srchbl"></div>
           <div id="formatted-casen12-data" class="election-results-group srchbl"></div>
           <div id="formatted-casen14-data" class="election-results-group srchbl"></div>
+        </div>
+        <div class="election-flex-container srchbl">
           <div id="formatted-sad5-data" class="election-results-group srchbl"></div>
           <div id="formatted-sad21-data" class="election-results-group srchbl"></div>
           <div id="formatted-sad23-data" class="election-results-group srchbl"></div>
@@ -68,32 +104,107 @@
           <div id="formatted-sad31-data" class="election-results-group srchbl"></div>
           <div id="formatted-sad32-data" class="election-results-group srchbl"></div>
         </div>
-        <hr>
       </div>
-      <div class="elections-outer-wrapper">
+
+      <div id="statewider-measures" class="elections-outer-wrapper">
         <div id="msr-data-header" class="srchbl"></div>
         <div id="msr-data-container" class="election-flex-container"></div>
       </div>
-      <hr>
-      <h2 style="text-align: center;" class="srchbl">FRESNO CITY COUNCIL</h2>
-      <p style="text-align: center;" class="srchbl" id="fresno-county-overview"></p>
-      <p style="text-align: center;" class="srchbl" id="fresno-county-time"></p>
-      <div class="election-flex-container">
-        <div id="formatted-city-council-3-data" class="election-results-group srchbl fresno-data"></div>
-        <div id="formatted-city-council-5-data" class="election-results-group srchbl fresno-data"></div>
-        <div id="formatted-city-council-7-data" class="election-results-group srchbl fresno-data"></div>
+
+      <div class="elections-outer-wrapper">
+        <div class="election-category-header">
+          <h1>FRESNO COUNTY RESULTS</h1>
+        </div>
+        <div class="flex-divider">
+          <div class="flex-divider-item"></div>
+          <div class="flex-divider-item"></div>
+        </div>
+        <p class="election-result-details" id="fresno-county-overview"></p>
       </div>
-      <h2 style="text-align: center;" class="srchbl">CITY of FRESNO BALLOT MEASURES</h2>
-      <div class="election-flex-container">
-        <div id="formatted-msrA-data" class="election-results-group srchbl fresno-data"></div>
-        <div id="formatted-msrO-data" class="election-results-group srchbl fresno-data"></div>
-        <div id="formatted-msrP-data" class="election-results-group srchbl fresno-data"></div>
-        <div id="formatted-msrQ-data" class="election-results-group srchbl fresno-data"></div>
+      
+      <div id="fresno-city-council" class="elections-outer-wrapper">
+        <div class="election-category-header srchbl">
+          <h2 class="srchbl">FRESNO CITY COUNCIL</h2>
+        </div>
+        <div class="election-flex-container">
+          <div id="formatted-cc3-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-cc5-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-cc7-data" class="election-results-group srchbl fresno-data"></div>
+        </div>
+      </div>
+
+      <div id="fresno-city-measures" class="elections-outer-wrapper">
+        <div class="election-category-header srchbl">
+          <h2 class="srchbl">CITY of FRESNO BALLOT MEASURES</h2>
+        </div>
+        <div class="election-flex-container">
+          <div id="formatted-msrA-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-msrO-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-msrP-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-msrQ-data" class="election-results-group srchbl fresno-data"></div>
+        </div>
+      </div>
+
+      <div id="fusd-reps" class="elections-outer-wrapper">
+        <div class="election-category-header srchbl">
+          <h2 class="srchbl">FRESNO UNIFIED SCHOOL DISTRICT</h2>
+        </div>
+        <div class="election-flex-container">
+          <div id="formatted-fusd1-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-fusd3-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-fusd4-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-fusd7-data" class="election-results-group srchbl fresno-data"></div>
+        </div>
+      </div>
+
+      <div id="cenusd-reps" class="elections-outer-wrapper">
+        <div class="election-category-header srchbl">
+          <h2 class="srchbl">CENTRAL UNIFIED SCHOOL DISTRICT</h2>
+        </div>
+        <div class="election-flex-container">
+          <div id="formatted-cenusd1-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-cenusd2-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-cenusd4-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-cenusd7-data" class="election-results-group srchbl fresno-data"></div>
+        </div>
+      </div>
+
+      <div id="cusd-reps" class="elections-outer-wrapper">
+        <div class="election-category-header srchbl">
+          <h2 class="srchbl">CLOVIS UNIFIED SCHOOL DISTRICT</h2>
+        </div>
+        <div class="election-flex-container">
+          <div id="formatted-cusd1-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-cusd3-data" class="election-results-group srchbl fresno-data"></div>
+        </div>
+      </div>
+
+      <div id="scccd-reps" class="elections-outer-wrapper">
+        <div class="election-category-header srchbl">
+          <h2 class="srchbl">STATE CENTER COMMUNITY COLLEGE DISTRICT</h2>
+          <p class="fresno-county-disclaimer"></p>
+        </div>
+        <div class="election-flex-container">
+          <div id="formatted-scccd4-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-scccd5-data" class="election-results-group srchbl fresno-data"></div>
+        </div>
+      </div>
+
+      <div id="fcboe-reps" class="elections-outer-wrapper">
+        <div class="election-category-header srchbl">
+          <h2 class="srchbl">FRESNO COUNTY BOARD OF EDUCATION</h2>
+          <p class="fresno-county-disclaimer"></p>
+        </div>
+        <div class="election-flex-container">
+          <div id="formatted-fcboe1-data" class="election-results-group srchbl fresno-data"></div>
+        </div>
       </div>
 
     </div>
   </div>
   
+  <div class="elections-ajax-modal"></div>
+
   <!-- Scripts -->
 
   <script src="gv-wire_elections_data_test.js"></script>
