@@ -893,6 +893,38 @@ $.ajax({
 
 });
 
+///////////////////////////////////////////
+
+// Board of Equalization District 1
+
+$.ajax({
+  url: "https://api.sos.ca.gov/returns/board-of-equalization/district/1"
+}).done(function(resp){
+  //var resp_string = JSON.stringify(resp);
+  //$('#raw-data').append(resp_string);
+  var boeq1_obj = resp.candidates;
+  var boeq1_header = '<div class="election-overview">' + '<div class="election-title">' + resp.raceTitle + '</div>' +
+                            '<div class="election-details">' + resp.Reporting + '<div>' + '</div>';
+
+  $('#formatted-boeq1-data').append(boeq1_header);
+
+  $.each( boeq1_obj, function( key, boeq1 ){
+    var boeq1_name = (boeq1.Name);
+    var boeq1_prty = (boeq1.Party);
+    var boeq1_votes = (boeq1.Percent);
+    var boeq1_data = '<div class="election-candidate" data-value="' + boeq1_votes + '">' + '<span class="' + boeq1_prty + '">' + boeq1_name + '</span>:' + ' ' + boeq1_votes + '%' + '</div>';
+
+    $('#formatted-boeq1-data').append(boeq1_data);
+
+    $('#formatted-boeq1-data').find('.election-candidate').sort(function (a, b) {
+      return $(b).attr('data-value') - $(a).attr('data-value');
+    })
+    .appendTo('#formatted-boeq1-data');
+
+  });
+
+});
+
 // End data from CA SoS
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1433,6 +1465,38 @@ $.ajax({
                    cusd3_num + '</div>';
 
     $('#formatted-cusd3-data').append(cusd3_data);
+
+  });
+
+});
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+// Fresno County Board of Eduction
+
+///////////////////////////////////////////
+
+// FCBoE 1
+
+$.ajax({
+  url: '/data/fcboe1.json'
+}).done(function(resp){
+  //var resp_string = JSON.stringify(resp);
+  //$('#fresno-county-data').append(resp_string);
+  var fcboe1 = resp.data;
+  $.each( fcboe1, function( key, fcboe1 ){
+    var fcboe1_index = (fcboe1.index);
+    var fcboe1_item = (fcboe1.item);
+    var fcboe1_name = fcboe1_item.toLowerCase();
+    var fcboe1_votes = (fcboe1.votePrcnt);
+    var fcboe1_num = (fcboe1.voteNum);
+    var fcboe1_data = '<div class="fresno-item index-item-' + fcboe1_index + '">' +
+                   '<span class="item-name">' + fcboe1_name + '</span>' + 
+                   (fcboe1_index != '0' ? ': ' : "") + ' ' + 
+                   (fcboe1_votes != false ? fcboe1_votes + ' &nbsp;|&nbsp; ' : "") + 
+                   fcboe1_num + '</div>';
+
+    $('#formatted-fcboe1-data').append(fcboe1_data);
 
   });
 
