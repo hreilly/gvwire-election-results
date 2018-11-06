@@ -966,9 +966,9 @@ $.ajax({
   var fresnoTime = resp.data;
   $.each( fresnoTime, function( key, fresnoTime ){
     var fresnoTime_time = (fresnoTime.time);
-    var time_data = '<br>' + fresnoTime_time;
+    var time_data = fresnoTime_time;
 
-    $('#fresno-county-overview').append(time_data);
+    $('#fresno-county-time').append(time_data);
 
   });
 
