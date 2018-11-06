@@ -218,6 +218,9 @@ h3 {
     content: '*Results for Fresno County precincts only.';
     font-style: italic;
 }
+#msr-data-header p {
+    padding-top: 0px;
+}
 
 @media screen and (max-width: 770px) {
     .election-results-group {
@@ -307,7 +310,6 @@ body.ajax-loading .elections-ajax-modal {
     -ms-flex-flow: wrap;
     flex-flow: wrap;
 
-    justify-content: center;
     width: 100%;
     margin-bottom: 70px;
 }
@@ -319,7 +321,9 @@ body.ajax-loading .elections-ajax-modal {
 }
 .bear-flex-item img, .ag-flex-item img {
     width: 100%;
-    max-width: 100%;
+    max-width: 80px;
+    min-width: 80px;
+    height: auto;
     margin: auto;
 }
 .bear-flex-item:last-of-type, .ag-flex-item:last-of-type {
