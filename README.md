@@ -6,3 +6,6 @@ See the 'package' directory for server-ready versions of all files and resources
 
 ## Future Goals
 Switch to a PHP deployment to increase deliverability and stability.
+
+-------------
+*Hannah Reilly, 2018*
