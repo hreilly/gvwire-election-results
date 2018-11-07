@@ -994,13 +994,18 @@ $.ajax({
     var cc3_name = cc3_item.toLowerCase();
     var cc3_votes = (cc3.votePrcnt);
     var cc3_num = (cc3.voteNum);
-    var cc3_data = '<div class="fresno-item index-item-' + cc3_index + '">' +
+    var cc3_data = '<div class="fresno-item index-item-' + cc3_index + (cc3_index > '6' ? ' fresno-candidate"' + ' data-value="' + cc3_num + '">' : '">') +
                    '<span class="item-name">' + cc3_name + '</span>' +
                    (cc3_index != '0' ? ': ' : "") + ' ' +
                    (cc3_votes != false ? cc3_votes + ' &nbsp;|&nbsp; ' : "") +
                    cc3_num + '</div>';
 
     $('#formatted-cc3-data').append(cc3_data);
+
+    $('#formatted-cc3-data').find('.fresno-candidate').sort(function (a, b) {
+      return $(b).attr('data-value') - $(a).attr('data-value');
+    })
+    .appendTo('#formatted-cc3-data');
 
   });
 
@@ -1022,13 +1027,18 @@ $.ajax({
     var cc5_name = cc5_item.toLowerCase();
     var cc5_votes = (cc5.votePrcnt);
     var cc5_num = (cc5.voteNum);
-    var cc5_data = '<div class="fresno-item index-item-' + cc5_index + '">' +
+    var cc5_data = '<div class="fresno-item index-item-' + cc5_index + (cc5_index > '6' ? ' fresno-candidate"' + ' data-value="' + cc5_num + '">' : '">') +
                    '<span class="item-name">' + cc5_name + '</span>' +
                    (cc5_index != '0' ? ':&nbsp; ' : "") + ' ' +
                    (cc5_votes != false ? cc5_votes + ' &nbsp;|&nbsp; ' : "") +
                    cc5_num + '</div>';
 
     $('#formatted-cc5-data').append(cc5_data);
+
+    $('#formatted-cc5-data').find('.fresno-candidate').sort(function (a, b) {
+      return $(b).attr('data-value') - $(a).attr('data-value');
+    })
+    .appendTo('#formatted-cc5-data');
 
   });
 
@@ -1050,13 +1060,18 @@ $.ajax({
     var cc7_name = cc7_item.toLowerCase();
     var cc7_votes = (cc7.votePrcnt);
     var cc7_num = (cc7.voteNum);
-    var cc7_data = '<div class="fresno-item index-item-' + cc7_index + '">' +
+    var cc7_data = '<div class="fresno-item index-item-' + cc7_index + (cc7_index > '6' ? ' fresno-candidate"' + ' data-value="' + cc7_num + '">' : '">') +
                    '<span class="item-name">' + cc7_name + '</span>' + 
                    (cc7_index != '0' ? ': ' : "") + ' ' + 
                    (cc7_votes != false ? cc7_votes + ' &nbsp;|&nbsp; ' : "") + 
                    cc7_num + '</div>';
 
     $('#formatted-cc7-data').append(cc7_data);
+
+    $('#formatted-cc7-data').find('.fresno-candidate').sort(function (a, b) {
+      return $(b).attr('data-value') - $(a).attr('data-value');
+    })
+    .appendTo('#formatted-cc7-data');
 
   });
 
@@ -1082,13 +1097,18 @@ $.ajax({
     var msrA_name = msrA_item.toLowerCase();
     var msrA_votes = (msrA.votePrcnt);
     var msrA_num = (msrA.voteNum);
-    var msrA_data = '<div class="fresno-item ballot-index-item-' + msrA_index + '">' +
+    var msrA_data = '<div class="fresno-item ballot-index-item-' + msrA_index + (msrA_index > '6' ? ' fresno-measure"' + ' data-value="' + msrA_num + '">' : '">') +
                     '<div class="' + (msrA_name == 'yes' ? 'yesPercent' : " ") + (msrA_name == 'no' ? 'noPercent' : " ") + '">' + '<span class="item-name ' + '">' + msrA_name + '</span>' + 
                     (msrA_index != '0' ? ': ' : "") + ' ' + 
                     (msrA_votes != false ? msrA_votes + ' &nbsp;|&nbsp; ' : "") + 
                     msrA_num + '</div>' + '</div>';
 
     $('#formatted-msrA-data').append(msrA_data);
+
+    $('#formatted-msrA-data').find('.fresno-measure').sort(function (a, b) {
+      return $(b).attr('data-value') - $(a).attr('data-value');
+    })
+    .appendTo('#formatted-msrA-data');
 
   });
 
@@ -1110,13 +1130,18 @@ $.ajax({
     var msrO_name = msrO_item.toLowerCase();
     var msrO_votes = (msrO.votePrcnt);
     var msrO_num = (msrO.voteNum);
-    var msrO_data = '<div class="fresno-item ballot-index-item-' + msrO_index + '">' +
+    var msrO_data = '<div class="fresno-item ballot-index-item-' + msrO_index + (msrO_index > '6' ? ' fresno-measure"' + ' data-value="' + msrO_num + '">' : '">') +
                     '<div class="' + (msrO_name == 'yes' ? 'yesPercent' : " ") + (msrO_name == 'no' ? 'noPercent' : " ") + '">' + '<span class="item-name ' + '">' + msrO_name + '</span>' + 
                     (msrO_index != '0' ? ': ' : "") + ' ' + 
                     (msrO_votes != false ? msrO_votes + ' &nbsp;|&nbsp; ' : "") + 
                     msrO_num + '</div>' + '</div>';
 
     $('#formatted-msrO-data').append(msrO_data);
+
+    $('#formatted-msrO-data').find('.fresno-measure').sort(function (a, b) {
+      return $(b).attr('data-value') - $(a).attr('data-value');
+    })
+    .appendTo('#formatted-msrO-data');
 
   });
 
@@ -1138,13 +1163,18 @@ $.ajax({
     var msrP_name = msrP_item.toLowerCase();
     var msrP_votes = (msrP.votePrcnt);
     var msrP_num = (msrP.voteNum);
-    var msrP_data = '<div class="fresno-item ballot-index-item-' + msrP_index + '">' +
+    var msrP_data = '<div class="fresno-item ballot-index-item-' + msrP_index + (msrP_index > '6' ? ' fresno-measure"' + ' data-value="' + msrP_num + '">' : '">') +
                     '<div class="' + (msrP_name == 'yes' ? 'yesPercent' : " ") + (msrP_name == 'no' ? 'noPercent' : " ") + '">' + '<span class="item-name ' + '">' + msrP_name + '</span>' + 
                     (msrP_index != '0' ? ': ' : "") + ' ' + 
                     (msrP_votes != false ? msrP_votes + ' &nbsp;|&nbsp; ' : "") + 
                     msrP_num + '</div>' + '</div>';
 
     $('#formatted-msrP-data').append(msrP_data);
+
+    $('#formatted-msrP-data').find('.fresno-measure').sort(function (a, b) {
+      return $(b).attr('data-value') - $(a).attr('data-value');
+    })
+    .appendTo('#formatted-msrP-data');
 
   });
 
@@ -1166,13 +1196,18 @@ $.ajax({
     var msrQ_name = msrQ_item.toLowerCase();
     var msrQ_votes = (msrQ.votePrcnt);
     var msrQ_num = (msrQ.voteNum);
-    var msrQ_data = '<div class="fresno-item ballot-index-item-' + msrQ_index + '">' +
+    var msrQ_data = '<div class="fresno-item ballot-index-item-' + msrQ_index + (msrQ_index > '6' ? ' fresno-measure"' + ' data-value="' + msrQ_num + '">' : '">') +
                     '<div class="' + (msrQ_name == 'yes' ? 'yesPercent' : " ") + (msrQ_name == 'no' ? 'noPercent' : " ") + '">' + '<span class="item-name ' + '">' + msrQ_name + '</span>' + 
                     (msrQ_index != '0' ? ': ' : "") + ' ' + 
                     (msrQ_votes != false ? msrQ_votes + ' &nbsp;|&nbsp; ' : "") + 
                     msrQ_num + '</div>' + '</div>';
 
     $('#formatted-msrQ-data').append(msrQ_data);
+
+    $('#formatted-msrQ-data').find('.fresno-measure').sort(function (a, b) {
+      return $(b).attr('data-value') - $(a).attr('data-value');
+    })
+    .appendTo('#formatted-msrQ-data');
 
   });
 
@@ -1198,13 +1233,18 @@ $.ajax({
     var fusd1_name = fusd1_item.toLowerCase();
     var fusd1_votes = (fusd1.votePrcnt);
     var fusd1_num = (fusd1.voteNum);
-    var fusd1_data = '<div class="fresno-item index-item-' + fusd1_index + '">' +
+    var fusd1_data = '<div class="fresno-item index-item-' + fusd1_index + (fusd1_index > '6' ? ' fresno-candidate"' + ' data-value="' + fusd1_num + '">' : '">') +
                    '<span class="item-name">' + fusd1_name + '</span>' + 
                    (fusd1_index != '0' ? ': ' : "") + ' ' + 
                    (fusd1_votes != false ? fusd1_votes + ' &nbsp;|&nbsp; ' : "") + 
                    fusd1_num + '</div>';
 
     $('#formatted-fusd1-data').append(fusd1_data);
+
+    $('#formatted-fusd1-data').find('.fresno-candidate').sort(function (a, b) {
+      return $(b).attr('data-value') - $(a).attr('data-value');
+    })
+    .appendTo('#formatted-fusd1-data');
 
   });
 
@@ -1226,13 +1266,18 @@ $.ajax({
     var fusd3_name = fusd3_item.toLowerCase();
     var fusd3_votes = (fusd3.votePrcnt);
     var fusd3_num = (fusd3.voteNum);
-    var fusd3_data = '<div class="fresno-item index-item-' + fusd3_index + '">' +
+    var fusd3_data = '<div class="fresno-item index-item-' + fusd3_index + (fusd3_index > '6' ? ' fresno-candidate"' + ' data-value="' + fusd3_num + '">' : '">') +
                    '<span class="item-name">' + fusd3_name + '</span>' + 
                    (fusd3_index != '0' ? ': ' : "") + ' ' + 
                    (fusd3_votes != false ? fusd3_votes + ' &nbsp;|&nbsp; ' : "") + 
                    fusd3_num + '</div>';
 
     $('#formatted-fusd3-data').append(fusd3_data);
+
+    $('#formatted-fusd3-data').find('.fresno-candidate').sort(function (a, b) {
+      return $(b).attr('data-value') - $(a).attr('data-value');
+    })
+    .appendTo('#formatted-fusd3-data');
 
   });
 
@@ -1254,13 +1299,18 @@ $.ajax({
     var fusd4_name = fusd4_item.toLowerCase();
     var fusd4_votes = (fusd4.votePrcnt);
     var fusd4_num = (fusd4.voteNum);
-    var fusd4_data = '<div class="fresno-item index-item-' + fusd4_index + '">' +
+    var fusd4_data = '<div class="fresno-item index-item-' + fusd4_index + (fusd4_index > '6' ? ' fresno-candidate"' + ' data-value="' + fusd4_num + '">' : '">') +
                    '<span class="item-name">' + fusd4_name + '</span>' + 
                    (fusd4_index != '0' ? ': ' : "") + ' ' + 
                    (fusd4_votes != false ? fusd4_votes + ' &nbsp;|&nbsp; ' : "") + 
                    fusd4_num + '</div>';
 
     $('#formatted-fusd4-data').append(fusd4_data);
+
+    $('#formatted-fusd4-data').find('.fresno-candidate').sort(function (a, b) {
+      return $(b).attr('data-value') - $(a).attr('data-value');
+    })
+    .appendTo('#formatted-fusd4-data');
 
   });
 
@@ -1282,13 +1332,18 @@ $.ajax({
     var fusd7_name = fusd7_item.toLowerCase();
     var fusd7_votes = (fusd7.votePrcnt);
     var fusd7_num = (fusd7.voteNum);
-    var fusd7_data = '<div class="fresno-item index-item-' + fusd7_index + '">' +
+    var fusd7_data = '<div class="fresno-item index-item-' + fusd7_index + (fusd7_index > '6' ? ' fresno-candidate"' + ' data-value="' + fusd7_num + '">' : '">') +
                    '<span class="item-name">' + fusd7_name + '</span>' + 
                    (fusd7_index != '0' ? ': ' : "") + ' ' + 
                    (fusd7_votes != false ? fusd7_votes + ' &nbsp;|&nbsp; ' : "") + 
                    fusd7_num + '</div>';
 
     $('#formatted-fusd7-data').append(fusd7_data);
+
+    $('#formatted-fusd7-data').find('.fresno-candidate').sort(function (a, b) {
+      return $(b).attr('data-value') - $(a).attr('data-value');
+    })
+    .appendTo('#formatted-fusd7-data');
 
   });
 
@@ -1314,13 +1369,18 @@ $.ajax({
     var cenusd1_name = cenusd1_item.toLowerCase();
     var cenusd1_votes = (cenusd1.votePrcnt);
     var cenusd1_num = (cenusd1.voteNum);
-    var cenusd1_data = '<div class="fresno-item index-item-' + cenusd1_index + '">' +
+    var cenusd1_data = '<div class="fresno-item index-item-' + cenusd1_index + (cenusd1_index > '6' ? ' fresno-candidate"' + ' data-value="' + cenusd1_num + '">' : '">') +
                    '<span class="item-name">' + cenusd1_name + '</span>' + 
                    (cenusd1_index != '0' ? ': ' : "") + ' ' + 
                    (cenusd1_votes != false ? cenusd1_votes + ' &nbsp;|&nbsp; ' : "") + 
                    cenusd1_num + '</div>';
 
     $('#formatted-cenusd1-data').append(cenusd1_data);
+
+    $('#formatted-cenusd1-data').find('.fresno-candidate').sort(function (a, b) {
+      return $(b).attr('data-value') - $(a).attr('data-value');
+    })
+    .appendTo('#formatted-cenusd1-data');
 
   });
 
@@ -1342,13 +1402,18 @@ $.ajax({
     var cenusd2_name = cenusd2_item.toLowerCase();
     var cenusd2_votes = (cenusd2.votePrcnt);
     var cenusd2_num = (cenusd2.voteNum);
-    var cenusd2_data = '<div class="fresno-item index-item-' + cenusd2_index + '">' +
+    var cenusd2_data = '<div class="fresno-item index-item-' + cenusd2_index + (cenusd2_index > '6' ? ' fresno-candidate"' + ' data-value="' + cenusd2_num + '">' : '">') +
                    '<span class="item-name">' + cenusd2_name + '</span>' + 
                    (cenusd2_index != '0' ? ': ' : "") + ' ' + 
                    (cenusd2_votes != false ? cenusd2_votes + ' &nbsp;|&nbsp; ' : "") + 
                    cenusd2_num + '</div>';
 
     $('#formatted-cenusd2-data').append(cenusd2_data);
+
+    $('#formatted-cenusd2-data').find('.fresno-candidate').sort(function (a, b) {
+      return $(b).attr('data-value') - $(a).attr('data-value');
+    })
+    .appendTo('#formatted-cenusd2-data');
 
   });
 
@@ -1370,13 +1435,18 @@ $.ajax({
     var cenusd4_name = cenusd4_item.toLowerCase();
     var cenusd4_votes = (cenusd4.votePrcnt);
     var cenusd4_num = (cenusd4.voteNum);
-    var cenusd4_data = '<div class="fresno-item index-item-' + cenusd4_index + '">' +
+    var cenusd4_data = '<div class="fresno-item index-item-' + cenusd4_index + (cenusd4_index > '6' ? ' fresno-candidate"' + ' data-value="' + cenusd4_num + '">' : '">') +
                    '<span class="item-name">' + cenusd4_name + '</span>' + 
                    (cenusd4_index != '0' ? ': ' : "") + ' ' + 
                    (cenusd4_votes != false ? cenusd4_votes + ' &nbsp;|&nbsp; ' : "") + 
                    cenusd4_num + '</div>';
 
     $('#formatted-cenusd4-data').append(cenusd4_data);
+
+    $('#formatted-cenusd4-data').find('.fresno-candidate').sort(function (a, b) {
+      return $(b).attr('data-value') - $(a).attr('data-value');
+    })
+    .appendTo('#formatted-cenusd4-data');
 
   });
 
@@ -1398,13 +1468,18 @@ $.ajax({
     var cenusd7_name = cenusd7_item.toLowerCase();
     var cenusd7_votes = (cenusd7.votePrcnt);
     var cenusd7_num = (cenusd7.voteNum);
-    var cenusd7_data = '<div class="fresno-item index-item-' + cenusd7_index + '">' +
+    var cenusd7_data = '<div class="fresno-item index-item-' + cenusd7_index + (cenusd7_index > '6' ? ' fresno-candidate"' + ' data-value="' + cenusd7_num + '">' : '">') +
                    '<span class="item-name">' + cenusd7_name + '</span>' + 
                    (cenusd7_index != '0' ? ': ' : "") + ' ' + 
                    (cenusd7_votes != false ? cenusd7_votes + ' &nbsp;|&nbsp; ' : "") + 
                    cenusd7_num + '</div>';
 
     $('#formatted-cenusd7-data').append(cenusd7_data);
+
+    $('#formatted-cenusd7-data').find('.fresno-candidate').sort(function (a, b) {
+      return $(b).attr('data-value') - $(a).attr('data-value');
+    })
+    .appendTo('#formatted-cenusd7-data');
 
   });
 
@@ -1430,13 +1505,18 @@ $.ajax({
     var cusd1_name = cusd1_item.toLowerCase();
     var cusd1_votes = (cusd1.votePrcnt);
     var cusd1_num = (cusd1.voteNum);
-    var cusd1_data = '<div class="fresno-item index-item-' + cusd1_index + '">' +
+    var cusd1_data = '<div class="fresno-item index-item-' + cusd1_index + (cusd1_index > '6' ? ' fresno-candidate"' + ' data-value="' + cusd1_num + '">' : '">') +
                    '<span class="item-name">' + cusd1_name + '</span>' + 
                    (cusd1_index != '0' ? ': ' : "") + ' ' + 
                    (cusd1_votes != false ? cusd1_votes + ' &nbsp;|&nbsp; ' : "") + 
                    cusd1_num + '</div>';
 
     $('#formatted-cusd1-data').append(cusd1_data);
+
+    $('#formatted-cusd1-data').find('.fresno-candidate').sort(function (a, b) {
+      return $(b).attr('data-value') - $(a).attr('data-value');
+    })
+    .appendTo('#formatted-cusd1-data');
 
   });
 
@@ -1458,13 +1538,18 @@ $.ajax({
     var cusd3_name = cusd3_item.toLowerCase();
     var cusd3_votes = (cusd3.votePrcnt);
     var cusd3_num = (cusd3.voteNum);
-    var cusd3_data = '<div class="fresno-item index-item-' + cusd3_index + '">' +
+    var cusd3_data = '<div class="fresno-item index-item-' + cusd3_index + (cusd3_index > '6' ? ' fresno-candidate"' + ' data-value="' + cusd3_num + '">' : '">') +
                    '<span class="item-name">' + cusd3_name + '</span>' + 
                    (cusd3_index != '0' ? ': ' : "") + ' ' + 
                    (cusd3_votes != false ? cusd3_votes + ' &nbsp;|&nbsp; ' : "") + 
                    cusd3_num + '</div>';
 
     $('#formatted-cusd3-data').append(cusd3_data);
+
+    $('#formatted-cusd3-data').find('.fresno-candidate').sort(function (a, b) {
+      return $(b).attr('data-value') - $(a).attr('data-value');
+    })
+    .appendTo('#formatted-cusd3-data');
 
   });
 
@@ -1490,13 +1575,18 @@ $.ajax({
     var fcboe1_name = fcboe1_item.toLowerCase();
     var fcboe1_votes = (fcboe1.votePrcnt);
     var fcboe1_num = (fcboe1.voteNum);
-    var fcboe1_data = '<div class="fresno-item index-item-' + fcboe1_index + '">' +
+    var fcboe1_data = '<div class="fresno-item index-item-' + fcboe1_index + (fcboe1_index > '6' ? ' fresno-candidate"' + ' data-value="' + fcboe1_num + '">' : '">') +
                    '<span class="item-name">' + fcboe1_name + '</span>' + 
                    (fcboe1_index != '0' ? ': ' : "") + ' ' + 
                    (fcboe1_votes != false ? fcboe1_votes + ' &nbsp;|&nbsp; ' : "") + 
                    fcboe1_num + '</div>';
 
     $('#formatted-fcboe1-data').append(fcboe1_data);
+
+    $('#formatted-fcboe1-data').find('.fresno-candidate').sort(function (a, b) {
+      return $(b).attr('data-value') - $(a).attr('data-value');
+    })
+    .appendTo('#formatted-fcboe1-data');
 
   });
 
@@ -1522,13 +1612,18 @@ $.ajax({
     var scccd4_name = scccd4_item.toLowerCase();
     var scccd4_votes = (scccd4.votePrcnt);
     var scccd4_num = (scccd4.voteNum);
-    var scccd4_data = '<div class="fresno-item index-item-' + scccd4_index + '">' +
+    var scccd4_data = '<div class="fresno-item index-item-' + scccd4_index + (scccd4_index > '6' ? ' fresno-candidate"' + ' data-value="' + scccd4_num + '">' : '">') +
                    '<span class="item-name">' + scccd4_name + '</span>' + 
                    (scccd4_index != '0' ? ': ' : "") + ' ' + 
                    (scccd4_votes != false ? scccd4_votes + ' &nbsp;|&nbsp; ' : "") + 
                    scccd4_num + '</div>';
 
     $('#formatted-scccd4-data').append(scccd4_data);
+
+    $('#formatted-scccd4-data').find('.fresno-candidate').sort(function (a, b) {
+      return $(b).attr('data-value') - $(a).attr('data-value');
+    })
+    .appendTo('#formatted-scccd4-data');
 
   });
 
@@ -1550,13 +1645,18 @@ $.ajax({
     var scccd5_name = scccd5_item.toLowerCase();
     var scccd5_votes = (scccd5.votePrcnt);
     var scccd5_num = (scccd5.voteNum);
-    var scccd5_data = '<div class="fresno-item index-item-' + scccd5_index + '">' +
+    var scccd5_data = '<div class="fresno-item index-item-' + scccd5_index + (scccd5_index > '6' ? ' fresno-candidate"' + ' data-value="' + scccd5_num + '">' : '">') +
                    '<span class="item-name">' + scccd5_name + '</span>' + 
                    (scccd5_index != '0' ? ': ' : "") + ' ' + 
                    (scccd5_votes != false ? scccd5_votes + ' &nbsp;|&nbsp; ' : "") + 
                    scccd5_num + '</div>';
 
     $('#formatted-scccd5-data').append(scccd5_data);
+
+    $('#formatted-scccd5-data').find('.fresno-candidate').sort(function (a, b) {
+      return $(b).attr('data-value') - $(a).attr('data-value');
+    })
+    .appendTo('#formatted-scccd5-data');
 
   });
 
