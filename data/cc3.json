@@ -1,1 +1,70 @@
-{"schema": {"fields":[{"name":"index","type":"integer"},{"name":"item","type":"string"},{"name":"voteNum","type":"string"},{"name":"votePrcnt","type":"string"}],"primaryKey":["index"],"pandas_version":"0.20.0"}, "data": [{"index":0,"item":"FRESNO CITY COUNCIL NO 3","voteNum":"","votePrcnt":""},{"index":2,"item":"Number of Precincts","voteNum":"51","votePrcnt":""},{"index":3,"item":"Precincts Reporting","voteNum":"0","votePrcnt":"0.0 %"},{"index":6,"item":"Total Votes","voteNum":"0","votePrcnt":""},{"index":8,"item":"MIGUEL ARIAS","voteNum":"0","votePrcnt":""},{"index":9,"item":"TATE HILL","voteNum":"0","votePrcnt":""},{"index":10,"item":"Write-in Votes","voteNum":"0","votePrcnt":""}]}
+{
+    "schema": {
+        "fields": [
+            {
+                "name": "index",
+                "type": "integer"
+            },
+            {
+                "name": "item",
+                "type": "string"
+            },
+            {
+                "name": "voteNum",
+                "type": "string"
+            },
+            {
+                "name": "votePrcnt",
+                "type": "string"
+            }
+        ],
+        "primaryKey": [
+            "index"
+        ],
+        "pandas_version": "0.20.0"
+    },
+    "data": [
+        {
+            "index": 0,
+            "item": "FRESNO CITY COUNCIL NO 3",
+            "voteNum": "",
+            "votePrcnt": ""
+        },
+        {
+            "index": 2,
+            "item": "Number of Precincts",
+            "voteNum": "51",
+            "votePrcnt": ""
+        },
+        {
+            "index": 3,
+            "item": "Precincts Reporting",
+            "voteNum": "0",
+            "votePrcnt": "0.0 %"
+        },
+        {
+            "index": 6,
+            "item": "Total Votes",
+            "voteNum": "0",
+            "votePrcnt": ""
+        },
+        {
+            "index": 8,
+            "item": "MIGUEL ARIAS",
+            "voteNum": "0",
+            "votePrcnt": ""
+        },
+        {
+            "index": 9,
+            "item": "TATE HILL",
+            "voteNum": "0",
+            "votePrcnt": ""
+        },
+        {
+            "index": 10,
+            "item": "Write-in Votes",
+            "voteNum": "0",
+            "votePrcnt": ""
+        }
+    ]
+}

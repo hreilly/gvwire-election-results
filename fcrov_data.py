@@ -6,18 +6,19 @@ Created on Tue Oct 22 08:32:22 2018
 """
 
 import time
+from bs4 import BeautifulSoup
+from bs4 import SoupStrainer
+import pandas as pd
+from pandas.core.groupby.groupby import DataError
+import requests
+from requests.exceptions import HTTPError
+from requests.exceptions import Timeout
+from requests.exceptions import TooManyRedirects
+    
 starttime=time.time()
 
 while True:
     
-    from bs4 import BeautifulSoup
-    from bs4 import SoupStrainer
-    import pandas as pd
-    from pandas.core.groupby.groupby import DataError
-    import requests
-    from requests.exceptions import HTTPError
-    from requests.exceptions import Timeout
-    from requests.exceptions import TooManyRedirects
     
     # Initiate HTTP request
 
@@ -157,7 +158,6 @@ while True:
         # ----------------------------------------------- End initial df defs
         
         # -------------------------- Season that soup
-        
         # Drop useless rows
         cc3 = cc3.drop(cc3.index[[1,4,5,7,8,9]])
         cc5 = cc5.drop(cc5.index[[1,4,5,7,8,9]])
