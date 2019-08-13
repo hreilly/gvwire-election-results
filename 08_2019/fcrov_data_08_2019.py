@@ -81,7 +81,7 @@ while True:
         # Filter out <hr>
         [x.decompose() for x in soup.findAll('hr')]
         
-        # Filter out <hr>
+        # Filter out <br>
         [x.decompose() for x in soup.findAll('br')]
         
         # Filter out <p>
@@ -171,20 +171,15 @@ while True:
         
         else:
             
-            print('Write to file successful. Process will refresh in 10 mins...')
+            print('Write to file successful. Process will refresh in 2 mins...')
             t = time.ctime()
-            print(t)
-            print(time.time())
-            print(starttime)
-            print((time.time() - starttime) % 600.0)
-            print(600.0 - ((time.time() - starttime) % 600.0))
             
             # Log list (disable in production environment)
             # print(list_df)
             
             # Update data in 10 minute intervals since start of last data update.
             # Please sir, may I have some more?
-            time.sleep(600.0 - ((time.time() - starttime) % 600.0))
+            time.sleep(120.0 - ((time.time() - starttime) % 120.0))
 
 
 
