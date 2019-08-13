@@ -1,0 +1,265 @@
+/*-------------------------*\
+    STRUCTURE
+\*-------------------------*/
+
+#elections-body-container {
+    font-family: 'Lato', sans-serif;
+    color: #000000;
+    max-width: 1280px;
+    margin: auto;
+    color: #000000;
+}
+#elections-page-header {
+    text-align: center;
+    max-width: 900px;
+    margin: auto;
+}
+.election-result-details {
+    text-align: center;
+    margin: 20px auto 40px auto;
+}
+.election-flex-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-flow: wrap;
+    -moz-flex-flow: wrap;
+    -ms-flex-flow: wrap;
+    flex-flow: wrap;
+
+    justify-content: center;
+    padding-bottom: 40px;
+}
+.election-results-group {
+    width: 30%;
+    min-width: 300px;
+    overflow: wrap;
+    padding: 30px;
+    margin: 5px;
+    border: 1px solid #dfdfdf;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+}
+.election-category-header {
+    text-align: center;
+    margin: auto;
+    padding-top: 10px;
+    background-color: #ffffff;
+    box-shadow: 0px -5px 3px -3px rgba(0,0,0,.15);
+}
+.index-item-6, .ballot-index-item-6 {
+    padding-bottom: 20px;
+}
+.election-candidate:last-child {
+    margin-bottom: 0;
+}
+@media screen and (max-width: 770px) {
+    .election-results-group {
+        width: 100%;
+    }
+}
+
+/*-------------------------*\
+    TYPOGRAPHY
+\*-------------------------*/
+
+#elections-body-container h1 {
+    padding: .5em 0px;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    color: #000000;
+    font-size: calc(.7vw + 1.5em);
+}
+#elections-body-container h2 {
+    padding: .5em 0px;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    color: #000000;
+    font-size: calc(.5vw + 1.2em);
+}
+#elections-body-container h3 {
+    padding: 0 0 20px 0;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    color: #000000;
+    font-size: calc(.2vw + 1em);
+    line-height: calc(.2vw + 1em);
+}
+#elections-body-container h4 {
+    padding: .5em 0px;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    color: #000000;
+}
+#elections-body-container p {
+    padding: 1em 0px;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    color: #000000;
+}
+#elections-page-header h1 {
+    font-size: calc(1vw + 2em);
+}
+#elections-page-header p {
+    max-width: 620px;
+    margin: auto;
+}
+.election-candidate, .ballot-measure, .fresno-item:nth-of-type(n+5) {
+    font-weight: bold;
+}
+.item-name {
+    text-transform: capitalize;
+}
+.election-title, .index-item-0, .ballot-index-item-0 {
+    font-weight: bold;
+    padding: 0 0 20px 0;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    color: #000000;
+    font-size: calc(.2vw + 1em);
+    line-height: calc(.2vw + 1em);
+}
+#msr-data-header p {
+    padding-top: 0px;
+}
+.election-category-header h2 {
+    text-transform: uppercase;
+}
+.election-details, .election-candidate {
+    margin: 0 auto 20px auto;
+}
+
+/*-------------------------*\
+    PAGE DIVIDERS
+\*-------------------------*/
+
+/* General Flex */
+.flex-divider, .elections-bear-divider, .elections-ag-divider {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-flow: wrap;
+    -moz-flex-flow: wrap;
+    -ms-flex-flow: wrap;
+    flex-flow: wrap;
+}
+
+/* Two-color page divider */
+.flex-divider {
+    justify-content: center;
+    max-width: 720px;
+    margin: auto;
+}
+.flex-divider-item:first-of-type {
+    margin-right: 2px;
+    height: 2px;
+    width: 48%;
+    background-color: #2196F3;
+}
+.flex-divider-item:last-of-type {
+    margin-left: 2px;
+    height: 2px;
+    width: 48%;
+    background-color: #F44336;
+}
+
+/* Supercede divider max-width */
+.tiny-divider {
+    max-width: 300px;
+}
+
+/* Bear & Ag flex dividers */
+.elections-bear-divider, .elections-ag-divider {
+    width: 100%;
+    margin-bottom: 70px;
+}
+.ag-flex-item:first-of-type {
+    margin: auto 4px auto auto;
+    height: 2px;
+    width: 29%;
+    background-color: #2196F3;
+}
+.ag-flex-item img {
+    width: 100%;
+    max-width: 80px;
+    min-width: 80px;
+    height: auto;
+    margin: auto;
+}
+.ag-flex-item:last-of-type {
+    margin: auto auto auto 2px;
+    height: 2px;
+    width: 30%;
+    background-color: #F44336;
+}
+
+/*-------------------------*\
+    EMPHASIS
+\*-------------------------*/
+
+/* Leader banner */
+/*.election-results-group .election-candidate:nth-of-type(2), .fresno-candidate:nth-of-type(5) {
+    background-color: #fefefe;
+    padding: 5px 0px 5px 10px;
+    margin: 0 auto 15px auto;
+    border-left: 3px solid #ffd54f;
+    box-shadow: 1px 1px 2px rgba(0,0,0,.1);
+    border-radius: 3px;
+}*/
+
+/*-------------------------*\
+    MISC
+\*-------------------------*/
+
+.fresno-county-disclaimer::after {
+    content: '*Results for Fresno County precincts only.';
+    font-style: italic;
+}
+
+/* AJAX page reload modal */
+
+.elections-ajax-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('/wp-content/elections/elections-ajax-loader.gif') 
+                50% 50% 
+                no-repeat;
+}
+body.ajax-loading .elections-ajax-modal {
+    overflow: hidden;   
+}
+body.ajax-loading .elections-ajax-modal {
+    display: block;
+}
+
+/* Fade content */
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}  
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Link styling */
+.elections-page-link {
+    color: #2196F3;
+    text-decoration: none;
+}
+
+/* GV Wire Specific */
+
+.cb-cat-header {
+    display: none;
+}
