@@ -1,0 +1,1 @@
+{"schema": {"fields":[{"name":"index","type":"integer"},{"name":"voters","type":"string"},{"name":"precincts","type":"string"}],"primaryKey":["index"],"pandas_version":"0.20.0"}, "data": [{"index":0,"voters":"Registered Voters 44746 - Cards Cast 0 0.00%","precincts":"Num. Report Precinct 26 - Num. Reporting 0 0.00%"}]}
