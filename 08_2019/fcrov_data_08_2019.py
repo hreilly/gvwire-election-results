@@ -173,6 +173,7 @@ while True:
             
             print('Write to file successful. Process will refresh in 2 mins...')
             t = time.ctime()
+            print(t)
             
             # Log list (disable in production environment)
             # print(list_df)
