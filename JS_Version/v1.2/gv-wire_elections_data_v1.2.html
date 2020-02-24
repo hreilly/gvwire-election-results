@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Election Results</title>
+  <script>
+    // Enable no-conflict for legacy JQuery features on site
+    jQuery.noConflict(true);
+  </script>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <link type="text/css" rel="stylesheet" href="/wp-content/elections/08_2019/gv-wire_elections_data_v1.2.min.css">
+
+</head>
+
+<body>
+
+  <div id="elections-body-container">
+    <!-- Enable this section along with desired JSON stringify functions in JS to view raw JSON data for any race -->
+    <!--<h2>Raw Response Data</h2>
+    <div id="fresno-county-data"></div>-->
+
+    <div id="elections-page-header">
+      <h1>2019 FRESNO CITY COUNCIL DISTRICT II SPECIAL ELECTION RESULTS</h1>
+      <div class="flex-divider">
+        <div class="flex-divider-item"></div>
+        <div class="flex-divider-item"></div>
+      </div>
+      <p style="font-style: italic;">Election night results are semifinal and should not be considered official. <strong>All candidate rankings are dependent on current vote counts and do not constitute any kind of ruling on the outcome.</strong></p>
+      <div class="flex-divider tiny-divider">
+        <div class="flex-divider-item"></div>
+        <div class="flex-divider-item"></div>
+      </div>
+      <p style="font-style: italic;">Fresno County data is reported from the <a href="https://www.co.fresno.ca.us/departments/county-clerk-registrar-of-voters/election-information/election-results" target="_blank" class="elections-page-link">Registrar of Voters</a>.</p>
+    </div>
+
+    <div id="formatted-election-results">
+
+      <div id="fresno-county-results" class="elections-outer-wrapper" style="margin-bottom: 20px;">
+        <div class="election-category-header">
+          <h1>FRESNO COUNTY RESULTS</h1>
+        </div>
+        <div class="flex-divider">
+          <div class="flex-divider-item"></div>
+          <div class="flex-divider-item"></div>
+        </div>
+        <div class="election-result-details">
+          <div id="fresno-county-overview"></div>
+          <p id="fresno-county-time"></p>
+        </div>
+      </div>
+      
+      <div id="fresno-city-council" class="elections-outer-wrapper">
+        <div class="election-category-header srchbl">
+          <h2 class="srchbl">FRESNO CITY COUNCIL</h2>
+        </div>
+        <div class="election-flex-container srchbl">
+          <div id="formatted-cc2-data" class="election-results-group srchbl fresno-data"></div>
+        </div>
+      </div>
+
+      <div class="elections-ag-divider srchbl">
+        <div class="ag-flex-item"></div>
+        <div class="ag-flex-item">
+          <img src="/wp-content/elections/fresno_county_ag_divided-01.svg">
+        </div>
+        <div class="ag-flex-item"></div>
+      </div>
+
+    </div>
+  </div>
+  
+  <div class="elections-ajax-modal"></div>
+
+  <!-- Scripts -->
+
+  <script src="/wp-content/elections/08_2019/gv-wire_elections_data_v1.2.min.js"></script>
+
+</body>
+
+</html>

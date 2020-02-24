@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Election Results</title>
+  <script>
+    // Enable no-conflict for legacy JQuery features on site
+    // jQuery.noConflict(true);
+  </script>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <link type="text/css" rel="stylesheet" href="gv-wire_elections_data_v1.3.css">
+
+</head>
+
+<body>
+
+  <div id="elections-body-container">
+    <!-- Enable this section along with desired JSON stringify functions in JS to view raw JSON data for any race -->
+    <!--<h2>Raw Response Data</h2>
+    <div id="raw-data"></div>
+    <div id="fresno-county-data"></div>-->
+
+    <img src="/wp-content/elections/elections_header_ca_and_fresno.jpg" style="width: 100%; height: auto; margin: 0; box-shadow: 0px 7px 5px -5px rgba(0,0,0,.15);">
+
+    <div id="elections-page-header">
+      <h1>2020 PRESIDENTIAL PRIMARY ELECTION RESULTS</h1>
+      <div class="flex-divider">
+        <div class="flex-divider-item"></div>
+        <div class="flex-divider-item"></div>
+      </div>
+      <p style="font-style: italic;">Election night results are semifinal and should not be considered official. <strong>All candidate rankings are dependent on current vote counts and do not constitute any kind of ruling on the outcome.</strong></p>
+      <div class="flex-divider tiny-divider">
+        <div class="flex-divider-item"></div>
+        <div class="flex-divider-item"></div>
+      </div>
+      <p style="font-style: italic;">Statewide data is reported from the <a href="https://vote.sos.ca.gov/" target="_blank" class="elections-page-link">California Secretary of State</a>.<br>Fresno County data is reported from the <a href="https://www.co.fresno.ca.us/departments/county-clerk-registrar-of-voters/election-information/election-results" target="_blank" class="elections-page-link">Registrar of Voters</a>.</p>
+    </div>
+    
+    <div id="election-search-header">
+      <input id="live-filter-results" type="text" placeholder="Begin typing to filter results...">
+    </div>
+
+    <div id="formatted-election-results">
+
+      <div id="sec-of-state-results" class="elections-outer-wrapper" style="margin-bottom: 20px;">
+        <div class="election-category-header">
+          <h1 style="text-align: center;">CA SECRETARY of STATE RESULTS</h1>
+        </div>
+        <div class="flex-divider">
+          <div class="flex-divider-item"></div>
+          <div class="flex-divider-item"></div>
+        </div>
+        <p class="election-result-details" id="statewide-reporting-content"></p>
+      </div>
+
+      <div id="statewide-elections" class="elections-outer-wrapper">
+        <div class="election-category-header srchbl">
+          <h2 class="srchbl">Statewide Elections</h2>
+        </div>
+        <div class="election-flex-container srchbl">
+          <div id="formatted-dem-data" class="election-results-group srchbl"></div>
+          <div id="formatted-rep-data" class="election-results-group srchbl"></div>
+          <div id="formatted-amin-data" class="election-results-group srchbl"></div>
+          <div id="formatted-grn-data" class="election-results-group srchbl"></div>
+          <div id="formatted-lib-data" class="election-results-group srchbl"></div>
+          <div id="formatted-paf-data" class="election-results-group srchbl"></div>
+        </div>
+      </div>
+
+      <div class="elections-bear-divider srchbl">
+        <div class="bear-flex-item"></div>
+        <div class="bear-flex-item">
+          <img src="/wp-content/elections/california_bear_divided-01.png">
+        </div>
+        <div class="bear-flex-item"></div>
+      </div>
+
+      <div id="districtwide-elections" class="elections-outer-wrapper">
+        <div class="election-category-header srchbl">
+          <h2 class="srchbl">Districtwide - Central Valley Area</h2>
+        </div>
+        <div class="flex-divider tiny-divider srchbl">
+          <div class="flex-divider-item"></div>
+          <div class="flex-divider-item"></div>
+        </div>
+        <h3 style="margin: auto; text-align: center; margin-top: 20px;" class="srchbl">U.S. CONGRESS</h3>
+        <div class="election-flex-container srchbl">
+          <div id="formatted-usca4-data" class="election-results-group srchbl"></div>
+          <div id="formatted-usca10-data" class="election-results-group srchbl"></div>
+          <div id="formatted-usca16-data" class="election-results-group srchbl"></div>
+          <div id="formatted-usca21-data" class="election-results-group srchbl"></div>
+          <div id="formatted-usca22-data" class="election-results-group srchbl"></div>
+          <div id="formatted-usca23-data" class="election-results-group srchbl"></div>
+        </div>
+        <h3 style="margin: auto; text-align: center;" class="srchbl">STATE SENATE</h3>
+        <div class="election-flex-container srchbl">
+          <div id="formatted-casen8-data" class="election-results-group srchbl"></div>
+          <div id="formatted-casen12-data" class="election-results-group srchbl"></div>
+          <div id="formatted-casen14-data" class="election-results-group srchbl"></div>
+        </div>
+        <h3 style="margin: auto; text-align: center;" class="srchbl">STATE ASSEMBLY</h3>
+        <div class="election-flex-container srchbl">
+          <div id="formatted-sad5-data" class="election-results-group srchbl"></div>
+          <div id="formatted-sad21-data" class="election-results-group srchbl"></div>
+          <div id="formatted-sad23-data" class="election-results-group srchbl"></div>
+          <div id="formatted-sad26-data" class="election-results-group srchbl"></div>
+          <div id="formatted-sad31-data" class="election-results-group srchbl"></div>
+          <div id="formatted-sad32-data" class="election-results-group srchbl"></div>
+        </div>
+        <h3 style="margin: auto; text-align: center;" class="srchbl">BOARD of EQUALIZATION</h3>
+        <div class="election-flex-container srchbl">
+          <div id="formatted-boeq1-data" class="election-results-group srchbl"></div>
+        </div>
+      </div>
+
+      <div class="elections-bear-divider srchbl">
+        <div class="bear-flex-item"></div>
+        <div class="bear-flex-item">
+          <img src="/wp-content/elections/california_bear_divided-01.svg">
+        </div>
+        <div class="bear-flex-item"></div>
+      </div>
+
+      <div id="statewide-measures" class="elections-outer-wrapper">
+        <div id="msr-data-header" class="srchbl"></div>
+        <div id="msr-data-container" class="election-flex-container srchbl"></div>
+      </div>
+
+      <div class="elections-bear-divider">
+        <div class="bear-flex-item"></div>
+        <div class="bear-flex-item">
+          <img src="/wp-content/elections/california_bear_divided-01.svg">
+        </div>
+        <div class="bear-flex-item"></div>
+      </div>
+
+      <div id="fresno-county-results" class="elections-outer-wrapper" style="margin-bottom: 20px;">
+        <div class="election-category-header">
+          <h1>FRESNO COUNTY RESULTS</h1>
+        </div>
+        <div class="flex-divider">
+          <div class="flex-divider-item"></div>
+          <div class="flex-divider-item"></div>
+        </div>
+        <div class="election-result-details">
+          <div id="fresno-county-overview"></div>
+          <p id="fresno-county-time"></p>
+        </div>
+      </div>
+      
+      <div id="fresno-city-council" class="elections-outer-wrapper">
+        <div class="election-category-header srchbl">
+          <h2 class="srchbl">FRESNO CITY COUNCIL</h2>
+        </div>
+        <div class="election-flex-container srchbl">
+          <div id="formatted-cc3-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-cc5-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-cc7-data" class="election-results-group srchbl fresno-data"></div>
+        </div>
+      </div>
+
+      <div class="elections-ag-divider srchbl">
+        <div class="ag-flex-item"></div>
+        <div class="ag-flex-item">
+          <img src="/wp-content/elections/fresno_county_ag_divided-01.svg">
+        </div>
+        <div class="ag-flex-item"></div>
+      </div>
+
+      <div id="fresno-city-measures" class="elections-outer-wrapper">
+        <div class="election-category-header srchbl">
+          <h2 class="srchbl">CITY of FRESNO BALLOT MEASURES</h2>
+        </div>
+        <div class="election-flex-container srchbl">
+          <div id="formatted-msrA-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-msrO-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-msrP-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-msrQ-data" class="election-results-group srchbl fresno-data"></div>
+        </div>
+      </div>
+
+      <div class="elections-ag-divider srchbl">
+        <div class="ag-flex-item"></div>
+        <div class="ag-flex-item">
+          <img src="/wp-content/elections/fresno_county_ag_divided-01.svg">
+        </div>
+        <div class="ag-flex-item"></div>
+      </div>
+
+      <div id="fresno-area-school-reps" class="elections-outer-wrapper">
+        <div class="election-category-header srchbl">
+          <h2 class="srchbl">SCHOOL DISTRICT REPS. (GREATER FRESNO AREA)</h2>
+        </div>
+        <div class="election-flex-container srchbl">
+          <div id="formatted-fusd1-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-fusd3-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-fusd4-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-fusd7-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-cenusd1-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-cenusd2-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-cenusd4-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-cenusd7-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-cusd1-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-cusd3-data" class="election-results-group srchbl fresno-data"></div>
+        </div>
+      </div>
+
+      <div class="elections-ag-divider srchbl">
+        <div class="ag-flex-item"></div>
+        <div class="ag-flex-item">
+          <img src="/wp-content/elections/fresno_county_ag_divided-01.svg">
+        </div>
+        <div class="ag-flex-item"></div>
+      </div>
+
+      <div id="scccd-reps" class="elections-outer-wrapper">
+        <div class="election-category-header srchbl">
+          <h2 class="srchbl">STATE CENTER COMMUNITY COLLEGE DISTRICT</h2>
+          <p class="fresno-county-disclaimer"></p>
+        </div>
+        <div class="election-flex-container srchbl">
+          <div id="formatted-scccd4-data" class="election-results-group srchbl fresno-data"></div>
+          <div id="formatted-scccd5-data" class="election-results-group srchbl fresno-data"></div>
+        </div>
+      </div>
+
+      <div class="elections-ag-divider srchbl">
+        <div class="ag-flex-item"></div>
+        <div class="ag-flex-item">
+          <img src="/wp-content/elections/fresno_county_ag_divided-01.svg">
+        </div>
+        <div class="ag-flex-item"></div>
+      </div>
+
+      <div id="fcboe-reps" class="elections-outer-wrapper">
+        <div class="election-category-header srchbl">
+          <h2 class="srchbl">FRESNO COUNTY BOARD OF EDUCATION</h2>
+          <p class="fresno-county-disclaimer"></p>
+        </div>
+        <div class="election-flex-container srchbl">
+          <div id="formatted-fcboe1-data" class="election-results-group srchbl fresno-data"></div>
+        </div>
+      </div>
+
+      <div class="elections-ag-divider">
+        <div class="ag-flex-item"></div>
+        <div class="ag-flex-item">
+          <img src="/wp-content/elections/fresno_county_ag_divided-01.svg">
+        </div>
+        <div class="ag-flex-item"></div>
+      </div>
+
+    </div>
+  </div>
+  
+  <div class="elections-ajax-modal"></div>
+
+  <!-- Scripts -->
+
+  <script src="gv-wire_elections_data_v1.3.js"></script>
+
+</body>
+
+</html>
