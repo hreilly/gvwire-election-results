@@ -189,33 +189,37 @@ $.ajax({
 
 });
 
+//////////////////////////////////////////////////////////////////////////////////////
+
+// District Races
+
 ///////////////////////////////////////////
 
-// American Independent
+// U.S Congress CA 16
 
 $.ajax({
-  url: "https://api.sos.ca.gov/returns/president/party/american-independent"
-}).done(function(resp) {
+  url: "https://api.sos.ca.gov/returns/us-rep/district/16"
+}).done(function(resp){
   //var resp_string = JSON.stringify(resp);
   //$('#raw-data').append(resp_string);
+  var usca16_obj = resp.candidates;
+  var usca16_header = '<div class="election-overview">' + '<div class="election-title">' + resp.raceTitle + '</div>' +
+                            '<div class="election-details">' + resp.Reporting + '</div>';
 
-  var amin_header = '<div class="election-overview">' + '<div class="election-title">' + resp.raceTitle + '</div>' + '</div>';
-  $('#formatted-amin-data').append(amin_header);
+  $('#formatted-usca16-data').append(usca16_header);
 
-  var amin_obj = resp.candidates;
+  $.each( usca16_obj, function( key, usca16 ){
+    var usca16_name = (usca16.Name);
+    var usca16_prty = (usca16.Party);
+    var usca16_votes = (usca16.Percent);
+    var usca16_data = '<div class="election-candidate" data-value="' + usca16_votes + '">' + '<span class="' + usca16_prty + '">' + usca16_name + '</span>:' + ' ' + usca16_votes + '%' + '</div>';
 
-  $.each( amin_obj, function( key, amin ){
-    var amin_name = (amin.Name);
-    var amin_prty = (amin.Party);
-    var amin_votes = (amin.Percent);
-    var amin_data = '<div class="election-candidate" data-value="' + amin_votes + '">' + '<span class="' + amin_prty + '">' + amin_name + '</span>:' + ' ' + amin_votes + '%' + '</div>';
+    $('#formatted-usca16-data').append(usca16_data);
 
-    $('#formatted-amin-data').append(amin_data);
-
-    $('#formatted-amin-data').find('.election-candidate').sort(function (a, b) {
+    $('#formatted-usca16-data').find('.election-candidate').sort(function (a, b) {
       return $(b).attr('data-value') - $(a).attr('data-value');
     })
-    .appendTo('#formatted-amin-data');
+    .appendTo('#formatted-usca16-data');
 
   });
 
@@ -223,31 +227,31 @@ $.ajax({
 
 ///////////////////////////////////////////
 
-// Green
+// U.S Congress CA 21
 
 $.ajax({
-  url: "https://api.sos.ca.gov/returns/president/party/green"
-}).done(function(resp) {
+  url: "https://api.sos.ca.gov/returns/us-rep/district/21"
+}).done(function(resp){
   //var resp_string = JSON.stringify(resp);
   //$('#raw-data').append(resp_string);
+  var usca21_obj = resp.candidates;
+  var usca21_header = '<div class="election-overview">' + '<div class="election-title">' + resp.raceTitle + '</div>' +
+                            '<div class="election-details">' + resp.Reporting + '<div>' + '</div>';
 
-  var grn_header = '<div class="election-overview">' + '<div class="election-title">' + resp.raceTitle + '</div>' + '</div>';
-  $('#formatted-grn-data').append(grn_header);
+  $('#formatted-usca21-data').append(usca21_header);
 
-  var grn_obj = resp.candidates;
+  $.each( usca21_obj, function( key, usca21 ){
+    var usca21_name = (usca21.Name);
+    var usca21_prty = (usca21.Party);
+    var usca21_votes = (usca21.Percent);
+    var usca21_data = '<div class="election-candidate" data-value="' + usca21_votes + '">' + '<span class="' + usca21_prty + '">' + usca21_name + '</span>:' + ' ' + usca21_votes + '%' + '</div>';
 
-  $.each( grn_obj, function( key, grn ){
-    var grn_name = (grn.Name);
-    var grn_prty = (grn.Party);
-    var grn_votes = (grn.Percent);
-    var grn_data = '<div class="election-candidate" data-value="' + grn_votes + '">' + '<span class="' + grn_prty + '">' + grn_name + '</span>:' + ' ' + grn_votes + '%' + '</div>';
+    $('#formatted-usca21-data').append(usca21_data);
 
-    $('#formatted-grn-data').append(grn_data);
-
-    $('#formatted-grn-data').find('.election-candidate').sort(function (a, b) {
+    $('#formatted-usca21-data').find('.election-candidate').sort(function (a, b) {
       return $(b).attr('data-value') - $(a).attr('data-value');
     })
-    .appendTo('#formatted-grn-data');
+    .appendTo('#formatted-usca21-data');
 
   });
 
@@ -255,63 +259,31 @@ $.ajax({
 
 ///////////////////////////////////////////
 
-// Libertarian
+// U.S Congress CA 22
 
 $.ajax({
-  url: "https://api.sos.ca.gov/returns/president/party/libertarian"
-}).done(function(resp) {
+  url: "https://api.sos.ca.gov/returns/us-rep/district/22"
+}).done(function(resp){
   //var resp_string = JSON.stringify(resp);
   //$('#raw-data').append(resp_string);
+  var usca22_obj = resp.candidates;
+  var usca22_header = '<div class="election-overview">' + '<div class="election-title">' + resp.raceTitle + '</div>' +
+                            '<div class="election-details">' + resp.Reporting + '<div>' + '</div>';
 
-  var lib_header = '<div class="election-overview">' + '<div class="election-title">' + resp.raceTitle + '</div>' + '</div>';
-  $('#formatted-lib-data').append(lib_header);
+  $('#formatted-usca22-data').append(usca22_header);
 
-  var lib_obj = resp.candidates;
+  $.each( usca22_obj, function( key, usca22 ){
+    var usca22_name = (usca22.Name);
+    var usca22_prty = (usca22.Party);
+    var usca22_votes = (usca22.Percent);
+    var usca22_data = '<div class="election-candidate" data-value="' + usca22_votes + '">' + '<span class="' + usca22_prty + '">' + usca22_name + '</span>:' + ' ' + usca22_votes + '%' + '</div>';
 
-  $.each( lib_obj, function( key, lib ){
-    var lib_name = (lib.Name);
-    var lib_prty = (lib.Party);
-    var lib_votes = (lib.Percent);
-    var lib_data = '<div class="election-candidate" data-value="' + lib_votes + '">' + '<span class="' + lib_prty + '">' + lib_name + '</span>:' + ' ' + lib_votes + '%' + '</div>';
+    $('#formatted-usca22-data').append(usca22_data);
 
-    $('#formatted-lib-data').append(lib_data);
-
-    $('#formatted-lib-data').find('.election-candidate').sort(function (a, b) {
+    $('#formatted-usca22-data').find('.election-candidate').sort(function (a, b) {
       return $(b).attr('data-value') - $(a).attr('data-value');
     })
-    .appendTo('#formatted-lib-data');
-
-  });
-
-});
-
-///////////////////////////////////////////
-
-// Peace and Freedom
-
-$.ajax({
-  url: "https://api.sos.ca.gov/returns/president/party/peace-and-freedom"
-}).done(function(resp) {
-  //var resp_string = JSON.stringify(resp);
-  //$('#raw-data').append(resp_string);
-
-  var paf_header = '<div class="election-overview">' + '<div class="election-title">' + resp.raceTitle + '</div>' + '</div>';
-  $('#formatted-paf-data').append(paf_header);
-
-  var paf_obj = resp.candidates;
-
-  $.each( paf_obj, function( key, paf ){
-    var paf_name = (paf.Name);
-    var paf_prty = (paf.Party);
-    var paf_votes = (paf.Percent);
-    var paf_data = '<div class="election-candidate" data-value="' + paf_votes + '">' + '<span class="' + paf_prty + '">' + paf_name + '</span>:' + ' ' + paf_votes + '%' + '</div>';
-
-    $('#formatted-paf-data').append(paf_data);
-
-    $('#formatted-paf-data').find('.election-candidate').sort(function (a, b) {
-      return $(b).attr('data-value') - $(a).attr('data-value');
-    })
-    .appendTo('#formatted-paf-data');
+    .appendTo('#formatted-usca22-data');
 
   });
 
