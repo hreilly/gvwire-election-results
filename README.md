@@ -8,4 +8,4 @@ See the 'package' directory for server-ready versions of all files and resources
 Switch to a PHP deployment to increase deliverability and stability.
 
 -------------
-*Hannah Reilly, 2019*
+*Hannah Reilly, 2020*
