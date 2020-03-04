@@ -120,20 +120,20 @@ while True:
         overview_data = dfs[0]
         
         # Mayor
-        may = dfs[51]
+        may = dfs[52]
         
         # City Council
-        cc4 = dfs[55]
+        cc4 = dfs[56]
         
         # Ballot Measures
-        msrA = dfs[63]
-        msrC = dfs[65]
-        msrM = dfs[75]
+        msrA = dfs[64]
+        msrC = dfs[66]
+        msrM = dfs[76]
         
         # Superior Court Judges
         
-        fcscj6 = dfs[41]
-        fcscj11 = dfs[43]
+        fcscj6 = dfs[42]
+        fcscj11 = dfs[44]
         
         # ----------------------------------------------- End initial df defs
         
