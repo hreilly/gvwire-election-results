@@ -68,12 +68,16 @@ while True:
         ########## Begin processing response from HTTP request
         
         # Create filter with SoupStrainer to limit parsing to main div | This id may change, watch out
-        res_filter = SoupStrainer('div',{'id': 'widget_1075_9231_6646'})
+        res_filter = SoupStrainer('div',{'id': 'gems_results'})
         
         # Grab the strained soup
         soup = BeautifulSoup(res.content,'lxml',parse_only=res_filter)
         
         ########### Cooking soup / breaking down content
+
+        soup.p.wrap(soup.new_tag("table"))
+        soup.p.wrap(soup.new_tag("tr"))
+        soup.p.wrap(soup.new_tag("td"))
         
         # Create an array of tag attributes to remove
         REMOVE_ATTRIBUTES = [
@@ -87,7 +91,7 @@ while True:
         [x.decompose() for x in soup.findAll('br')]
         
         # Filter out <p>
-        [x.decompose() for x in soup.findAll('p')]
+        [x.unwrap() for x in soup.findAll('p')]
         
         # Filter out <h3>
         [x.decompose() for x in soup.findAll('h3')]
@@ -104,8 +108,8 @@ while True:
                 del(tag[attribute])
         
         # Print the final result of all filters and functions (disable after data identification)
-        # with open("./data/fcrov_data.html", "w") as file:
-            # file.write(soup.prettify())
+        with open("./data/fcrov_data.html", "w") as file:
+            file.write(soup.prettify())
         
         # ----------------------------------------------- End Soup Functions, Begin Pandas
         
@@ -113,47 +117,45 @@ while True:
         dfs = pd.read_html(str(soup), header=None)
         
         # -------------------------- Define relevant data frames
-        time_data = dfs[1]
-        overview_data = dfs[2]
+        overview_data = dfs[0]
         
         # Mayor
-        may = dfs[154]
+        may = dfs[52]
         
         # City Council
-        cc4 = dfs[246]
+        cc4 = dfs[56]
         
         # Ballot Measures
-        msrA = dfs[138]
-        msrC = dfs[140]
-        msrM = dfs[142]
+        msrA = dfs[64]
+        msrC = dfs[66]
+        msrM = dfs[76]
         
         # Superior Court Judges
         
-        fcscj6 = dfs[62]
-        fcscj11 = dfs[64]
+        fcscj6 = dfs[42]
+        fcscj11 = dfs[44]
         
         # ----------------------------------------------- End initial df defs
         
         # -------------------------- Season that soup
         # Drop useless rows
-        may = may.drop(may.index[[1,4,5,7,8,9]])
+        may = may.drop(may.index[[0,9]])
 
-        cc4 = cc4.drop(cc4.index[[1,4,5,7,8,9]])
+        cc4 = cc4.drop(cc4.index[[0,4]])
 
-        msrA = msrA.drop(msrA.index[[1,4,5,7,8,9]])
-        msrC = msrC.drop(msrC.index[[1,4,5,7,8,9]])
-        msrM = msrM.drop(msrM.index[[1,4,5,7,8,9]])
+        msrA = msrA.drop(msrA.index[[0,3]])
+        msrC = msrC.drop(msrC.index[[0,3]])
+        msrM = msrM.drop(msrM.index[[0,3]])
 
-        fcscj6 = fcscj6.drop(fcscj6.index[[1,4,5,7,8,9]])
-        fcscj11 = fcscj11.drop(fcscj11.index[[1,4,5,7,8,9]])
+        fcscj6 = fcscj6.drop(fcscj6.index[[0,3]])
+        fcscj11 = fcscj11.drop(fcscj11.index[[0,4]])
         
         # Var for naming cols
         new_cols = {0:'item', 1:'partyPref', 2:'voteNum', 3:'votePrcnt'}
-        time_cols = {2:'time'}
-        overview_cols = {0:'voters', 1:'precincts'}
+        overview_cols = {0:'item', 1:'partyPref'}
         
         # Rename columns in single data frames
-        time_data.rename(columns = time_cols, inplace = True)
+
         overview_data.rename(columns = overview_cols, inplace = True)
 
         may.rename(columns = new_cols, inplace = True)
@@ -208,9 +210,8 @@ while True:
         try:
             
             # Servin' it up, Gary's way
-            time_data.to_json('./data/time.json', orient='table', index=True)
             overview_data.to_json('./data/overview.json', orient='table', index=True)
-            
+
             may.to_json('./data/may.json', orient='table', index=True)
 
             cc4.to_json('./data/cc4.json', orient='table', index=True)

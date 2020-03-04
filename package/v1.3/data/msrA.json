@@ -1,0 +1,1 @@
+{"schema": {"fields":[{"name":"index","type":"integer"},{"name":"item","type":"string"},{"name":"voteNum","type":"string"}],"primaryKey":["index"],"pandas_version":"0.20.0"}, "data": [{"index":1,"item":"BONDS - YES","voteNum":"0"},{"index":2,"item":"BONDS - NO","voteNum":"0"}]}
