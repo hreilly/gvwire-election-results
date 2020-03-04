@@ -106,7 +106,7 @@
     max-width: 620px;
     margin: auto;
 }
-.election-candidate, .ballot-measure, /*.fresno-item:nth-of-type(2)*/ {
+.election-candidate, .ballot-measure, .fresno-item:nth-of-type(2) {
     font-weight: bold;
 }
 .item-name {
@@ -222,14 +222,14 @@
 \*-------------------------*/
 
 /* Leader banner */
-/*.election-results-group .election-candidate:nth-of-type(2), .fresno-candidate:nth-of-type(2) {
+.election-results-group .election-candidate:nth-of-type(2), .fresno-candidate:nth-of-type(2) {
     background-color: #fefefe;
     padding: 5px 0px 5px 10px;
     margin: 0 auto 15px auto;
     border-left: 3px solid #ffd54f;
     box-shadow: 1px 1px 2px rgba(0,0,0,.1);
     border-radius: 3px;
-}*/
+}
 
 /* Yes banner */
 .yesPercent {
