@@ -29,7 +29,7 @@
     <img src="/wp-content/elections/elections_header_ca_and_fresno.jpg" style="width: 100%; height: auto; margin: 0; box-shadow: 0px 7px 5px -5px rgba(0,0,0,.15);">
 
     <div id="elections-page-header">
-      <h1>2020 PRESIDENTIAL PRIMARY ELECTION RESULTS</h1>
+      <h1>2020 ELECTION RESULTS</h1>
       <div class="flex-divider">
         <div class="flex-divider-item"></div>
         <div class="flex-divider-item"></div>
@@ -41,7 +41,7 @@
       </div>
       <p style="font-style: italic;">Statewide data is reported from the <a href="https://vote.sos.ca.gov/" target="_blank" class="elections-page-link">California Secretary of State</a>.<br>Fresno County data is reported from the <a href="https://www.co.fresno.ca.us/departments/county-clerk-registrar-of-voters/election-information/election-results" target="_blank" class="elections-page-link">Registrar of Voters</a>.</p>
     </div>
-    
+
     <div id="election-search-header">
       <input id="live-filter-results" type="text" placeholder="Begin typing to filter results...">
     </div>
@@ -67,7 +67,7 @@
           <div class="flex-divider-item"></div>
           <div class="flex-divider-item"></div>
         </div>
-        <h3 style="margin: auto; text-align: center; margin-top: 20px; text-transform: uppercase;" class="srchbl">Presidential Primary Nominees</h3>
+        <h3 style="margin: auto; text-align: center; margin-top: 20px; text-transform: uppercase;" class="srchbl">President of the United States</h3>
         <div class="election-flex-container srchbl">
           <div id="formatted-dem-data" class="election-results-group srchbl"></div>
           <div id="formatted-rep-data" class="election-results-group srchbl"></div>
@@ -96,6 +96,14 @@
           <div id="formatted-usca21-data" class="election-results-group srchbl"></div>
           <div id="formatted-usca22-data" class="election-results-group srchbl"></div>
         </div>
+
+        <h3 style="margin: auto; text-align: center; margin-top: 20px;" class="srchbl">STATE ASSEMBLY</h3>
+        <div class="election-flex-container srchbl">
+          <div id="formatted-ad31-data" class="election-results-group srchbl"></div>
+          <div id="formatted-ad26-data" class="election-results-group srchbl"></div>
+        </div>
+
+
       </div>
 
       <div class="elections-bear-divider srchbl">
@@ -134,14 +142,17 @@
           <p id="fresno-county-time"></p>
         </div>
       </div>
-      
-      <div id="fresno-mayor" class="elections-outer-wrapper">
+
+      <div id="fresno-county-boe" class="elections-outer-wrapper">
         <div class="election-category-header srchbl">
-          <h2 class="srchbl">FRESNO MAYOR</h2>
+          <h2 class="srchbl">FRESNO COUNTY BOARD OF EDUCATION</h2>
         </div>
         <div class="election-flex-container srchbl">
-          <div id="formatted-mayor-data" class="election-results-group srchbl fresno-data">
-            <div class="srchbl fresno-title">Mayor</div>
+          <div id="formatted-fcboe2-data" class="election-results-group srchbl fresno-data">
+            <div class="srchbl fresno-title">Area 2</div>
+          </div>
+          <div id="formatted-fcboe3-data" class="election-results-group srchbl fresno-data">
+            <div class="srchbl fresno-title">Area 3</div>
           </div>
         </div>
       </div>
@@ -154,13 +165,22 @@
         <div class="ag-flex-item"></div>
       </div>
 
-      <div id="fresno-city-council" class="elections-outer-wrapper">
+      <div id="state-center-community-college-district" class="elections-outer-wrapper">
         <div class="election-category-header srchbl">
-          <h2 class="srchbl">FRESNO CITY COUNCIL</h2>
+          <h2 class="srchbl">STATE CENTER COMMUNITY COLLEGE DISTRICT</h2>
         </div>
         <div class="election-flex-container srchbl">
-          <div id="formatted-cc4-data" class="election-results-group srchbl fresno-data">
-            <div class="srchbl fresno-title">City Council District 4</div>
+          <div id="formatted-scccd2-data" class="election-results-group srchbl fresno-data">
+            <div class="srchbl fresno-title">Area 2</div>
+          </div>
+          <div id="formatted-scccd3-data" class="election-results-group srchbl fresno-data">
+            <div class="srchbl fresno-title">Area 3</div>
+          </div>
+          <div id="formatted-scccd6-data" class="election-results-group srchbl fresno-data">
+            <div class="srchbl fresno-title">Area 6</div>
+          </div>
+          <div id="formatted-scccd7-data" class="election-results-group srchbl fresno-data">
+            <div class="srchbl fresno-title">Area 7</div>
           </div>
         </div>
       </div>
@@ -173,19 +193,22 @@
         <div class="ag-flex-item"></div>
       </div>
 
-      <div id="fresno-city-measures" class="elections-outer-wrapper">
+      <div id="central-unified-school-district" class="elections-outer-wrapper">
         <div class="election-category-header srchbl">
-          <h2 class="srchbl">COUNTY of FRESNO BALLOT MEASURES</h2>
+          <h2 class="srchbl">CENTRAL UNIFIED SCHOOL DISTRICT</h2>
         </div>
         <div class="election-flex-container srchbl">
-          <div id="formatted-msrA-data" class="election-results-group srchbl fresno-data">
-            <div class="srchbl fresno-title">Measure A - Clovis Unified School District Bond (55% required to pass)</div>
+          <div id="formatted-cenusd3-data" class="election-results-group srchbl fresno-data">
+            <div class="srchbl fresno-title">Area 3</div>
           </div>
-          <div id="formatted-msrC-data" class="election-results-group srchbl fresno-data">
-            <div class="srchbl fresno-title">Measure C - Central Unified School District Bond (55% required to pass)</div>
+          <div id="formatted-cenusd4-data" class="election-results-group srchbl fresno-data">
+            <div class="srchbl fresno-title">Area 4</div>
           </div>
-          <div id="formatted-msrM-data" class="election-results-group srchbl fresno-data">
-            <div class="srchbl fresno-title">Measure M - Fresno Unified School District Bond (55% required to pass)</div>
+          <div id="formatted-cenusd6-data" class="election-results-group srchbl fresno-data">
+            <div class="srchbl fresno-title">Area 6</div>
+          </div>
+          <div id="formatted-bondmeasd-data" class="election-results-group srchbl fresno-data">
+            <div class="srchbl fresno-title">Bond Measure D</div>
           </div>
         </div>
       </div>
@@ -198,16 +221,45 @@
         <div class="ag-flex-item"></div>
       </div>
 
-      <div id="fresno-county-superior-court" class="elections-outer-wrapper">
+      <div id="clovis-unified-school-district" class="elections-outer-wrapper">
         <div class="election-category-header srchbl">
-          <h2 class="srchbl">FRESNO COUNTY SUPERIOR COURT</h2>
+          <h2 class="srchbl">CLOVIS UNIFIED SCHOOL DISTRICT</h2>
         </div>
         <div class="election-flex-container srchbl">
-          <div id="formatted-fcscj6-data" class="election-results-group srchbl fresno-data">
-            <div class="srchbl fresno-title">Superior Court Judge No. 6</div>
+          <div id="formatted-cusd2-data" class="election-results-group srchbl fresno-data">
+            <div class="srchbl fresno-title">Area 2</div>
           </div>
-          <div id="formatted-fcscj11-data" class="election-results-group srchbl fresno-data">
-            <div class="srchbl fresno-title">Superior Court Judge No. 11</div>
+          <div id="formatted-cusd4-data" class="election-results-group srchbl fresno-data">
+            <div class="srchbl fresno-title">Area 4</div>
+          </div>
+          <div id="formatted-cusd7-data" class="election-results-group srchbl fresno-data">
+            <div class="srchbl fresno-title">Area 7</div>
+          </div>
+          <div id="formatted-bondmeasa-data" class="election-results-group srchbl fresno-data">
+            <div class="srchbl fresno-title">Bond Measure A</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="elections-ag-divider">
+        <div class="ag-flex-item"></div>
+        <div class="ag-flex-item">
+          <img src="/wp-content/elections/fresno_county_ag_divided-01.svg">
+        </div>
+        <div class="ag-flex-item"></div>
+      </div>
+
+
+      <div id="fresno-unified-school-district" class="elections-outer-wrapper">
+        <div class="election-category-header srchbl">
+          <h2 class="srchbl">FRESNO UNIFIED SCHOOL DISTRICT</h2>
+        </div>
+        <div class="election-flex-container srchbl">
+          <div id="formatted-fusd5-data" class="election-results-group srchbl fresno-data">
+            <div class="srchbl fresno-title">Area 5</div>
+          </div>
+          <div id="formatted-fusd6-data" class="election-results-group srchbl fresno-data">
+            <div class="srchbl fresno-title">Area 6</div>
           </div>
         </div>
       </div>
@@ -231,7 +283,7 @@
     </div>
     <p style="font-style: italic; padding-top: 20px;">Statewide data is reported from the <a href="https://vote.sos.ca.gov/" target="_blank" class="elections-page-link">California Secretary of State</a>.<br>Fresno County data is reported from the <a href="https://www.co.fresno.ca.us/departments/county-clerk-registrar-of-voters/election-information/election-results" target="_blank" class="elections-page-link">Registrar of Voters</a>.</p>
   </div>
-  
+
   <div class="elections-ajax-modal"></div>
 
   <!-- Scripts -->
