@@ -1,0 +1,1 @@
+{"schema": {"fields":[{"name":"index","type":"integer"},{"name":"item","type":"string"},{"name":"voteNum","type":"string"}],"primaryKey":["index"],"pandas_version":"0.20.0"}, "data": [{"index":1,"item":"HUGH H. AWTREY","voteNum":"0"},{"index":2,"item":"NOHA ELBAZ","voteNum":"0"},{"index":3,"item":"JONATHAN HOLT","voteNum":"0"},{"index":4,"item":"Write-in","voteNum":"0"}]}

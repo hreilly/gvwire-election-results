@@ -1,0 +1,1 @@
+{"schema": {"fields":[{"name":"index","type":"integer"},{"name":"item","type":"string"}],"primaryKey":["index"],"pandas_version":"0.20.0"}, "data": [{"index":0,"item":"Precincts Reported: 0 of 384 (0.00%)"}]}
