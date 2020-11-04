@@ -10,7 +10,7 @@ import time
 from bs4 import BeautifulSoup
 from bs4 import SoupStrainer
 import pandas as pd
-# from pandas.core.groupby.groupby import DataError
+from pandas.core.base import DataError
 import requests
 from requests.exceptions import HTTPError
 from requests.exceptions import Timeout
@@ -118,37 +118,61 @@ while True:
         
         # -------------------------- Define relevant data frames
         overview_data = dfs[0]
+
+        # Fresno County Board of Education
+        fcboe2 = dfs[17]
+        fcboe3 = dfs[19]
+
+        # SCCCD
+        scccd2 = dfs[25]
+        scccd3 = dfs[27]
+        scccd6 = dfs[29]
+        scccd7 = dfs[31]
+
+        # Central Unified School District
+        cenusd3 = dfs[35]
+        cenusd6 = dfs[37]
+        cenusd4 = dfs[39]
         
-        # Mayor
-        may = dfs[52]
+        # Clovis Unified School District
+        cusd2 = dfs[41]
+        cusd4 = dfs[43]
+        cusd7 = dfs[45]
         
-        # City Council
-        cc4 = dfs[56]
+        # Fresno Unified School District
+        fusd5 = dfs[56]
+        fusd6 = dfs[58]
         
         # Ballot Measures
-        msrA = dfs[64]
-        msrC = dfs[66]
-        msrM = dfs[76]
-        
-        # Superior Court Judges
-        
-        fcscj6 = dfs[42]
-        fcscj11 = dfs[44]
+        msrA = dfs[191]
+        msrD = dfs[195]
         
         # ----------------------------------------------- End initial df defs
         
         # -------------------------- Season that soup
-        # Drop useless rows
-        may = may.drop(may.index[[0,9]])
 
-        cc4 = cc4.drop(cc4.index[[0,4]])
+        # Drop useless rows
+        fcboe2 = fcboe2.drop(fcboe2.index[[0,4]])
+        fcboe3 = fcboe3.drop(fcboe3.index[[0,6]])
+
+        scccd2 = scccd2.drop(scccd2.index[[0,5]])
+        scccd3 = scccd3.drop(scccd3.index[[0,5]])
+        scccd6 = scccd6.drop(scccd6.index[[0,5]])
+        scccd7 = scccd7.drop(scccd7.index[[0,5]])
+
+        cenusd3 = cenusd3.drop(cenusd3.index[[0,4]])
+        cenusd6 = cenusd6.drop(cenusd6.index[[0,6]])
+        cenusd4 = cenusd4.drop(cenusd4.index[[0,4]])
+
+        cusd2 = cusd2.drop(cusd2.index[[0,4]])
+        cusd4 = cusd4.drop(cusd4.index[[0,5]])
+        cusd7 = cusd7.drop(cusd7.index[[0,4]])
+
+        fusd5 = fusd5.drop(fusd5.index[[0,6]])
+        fusd6 = fusd6.drop(fusd6.index[[0,5]])
 
         msrA = msrA.drop(msrA.index[[0,3]])
-        msrC = msrC.drop(msrC.index[[0,3]])
-        msrM = msrM.drop(msrM.index[[0,3]])
-
-        fcscj6 = fcscj6.drop(fcscj6.index[[0,3]])
-        fcscj11 = fcscj11.drop(fcscj11.index[[0,4]])
+        msrD = msrD.drop(msrD.index[[0,3]])
         
         # Var for naming cols
         new_cols = {0:'item', 1:'partyPref', 2:'voteNum', 3:'votePrcnt'}
@@ -158,70 +182,124 @@ while True:
 
         overview_data.rename(columns = overview_cols, inplace = True)
 
-        may.rename(columns = new_cols, inplace = True)
+        fcboe2.rename(columns = new_cols, inplace = True)
+        fcboe3.rename(columns = new_cols, inplace = True)
+        
+        scccd2.rename(columns = new_cols, inplace = True)
+        scccd3.rename(columns = new_cols, inplace = True)
+        scccd6.rename(columns = new_cols, inplace = True)
+        scccd7.rename(columns = new_cols, inplace = True)
 
-        cc4.rename(columns = new_cols, inplace = True)
+        cenusd3.rename(columns = new_cols, inplace = True)
+        cenusd6.rename(columns = new_cols, inplace = True)
+        cenusd4.rename(columns = new_cols, inplace = True)
+
+        cusd2.rename(columns = new_cols, inplace = True)
+        cusd4.rename(columns = new_cols, inplace = True)
+        cusd7.rename(columns = new_cols, inplace = True)
+
+        fusd5.rename(columns = new_cols, inplace = True)
+        fusd6.rename(columns = new_cols, inplace = True)
 
         msrA.rename(columns = new_cols, inplace = True)
-        msrC.rename(columns = new_cols, inplace = True)
-        msrM.rename(columns = new_cols, inplace = True)
-
-        fcscj6.rename(columns = new_cols, inplace = True)
-        fcscj11.rename(columns = new_cols, inplace = True)
+        msrD.rename(columns = new_cols, inplace = True)
         
         # Delete empty columns
-        may = may.dropna(axis=1, how='all', thresh=None)
+        fcboe2 = fcboe2.dropna(axis=1, how='all', thresh=None)
+        fcboe3 = fcboe3.dropna(axis=1, how='all', thresh=None)
 
-        cc4 = cc4.dropna(axis=1, how='all', thresh=None)
+        scccd2 = scccd2.dropna(axis=1, how='all', thresh=None)
+        scccd3 = scccd3.dropna(axis=1, how='all', thresh=None)
+        scccd6 = scccd6.dropna(axis=1, how='all', thresh=None)
+        scccd7 = scccd7.dropna(axis=1, how='all', thresh=None)
+
+        cenusd3 = cenusd3.dropna(axis=1, how='all', thresh=None)
+        cenusd6 = cenusd6.dropna(axis=1, how='all', thresh=None)
+        cenusd4 = cenusd4.dropna(axis=1, how='all', thresh=None)
+
+        cusd2 = cusd2.dropna(axis=1, how='all', thresh=None)
+        cusd4 = cusd4.dropna(axis=1, how='all', thresh=None)
+        cusd7 = cusd7.dropna(axis=1, how='all', thresh=None)
+
+        fusd5 = fusd5.dropna(axis=1, how='all', thresh=None)
+        fusd6 = fusd6.dropna(axis=1, how='all', thresh=None)
 
         msrA = msrA.dropna(axis=1, how='all', thresh=None)
-        msrC = msrC.dropna(axis=1, how='all', thresh=None)
-        msrM = msrM.dropna(axis=1, how='all', thresh=None)
-
-        fcscj6 = fcscj6.dropna(axis=1, how='all', thresh=None)
-        fcscj11 = fcscj11.dropna(axis=1, how='all', thresh=None)
+        msrD = msrD.dropna(axis=1, how='all', thresh=None)
         
         # Delete empty rows
-        may = may.dropna(axis=0, how='all', thresh=None)
+        fcboe2 = fcboe2.dropna(axis=0, how='all', thresh=None)
+        fcboe3 = fcboe3.dropna(axis=0, how='all', thresh=None)
 
-        cc4 = cc4.dropna(axis=0, how='all', thresh=None)
+        scccd2 = scccd2.dropna(axis=0, how='all', thresh=None)
+        scccd3 = scccd3.dropna(axis=0, how='all', thresh=None)
+        scccd6 = scccd6.dropna(axis=0, how='all', thresh=None)
+        scccd7 = scccd7.dropna(axis=0, how='all', thresh=None)
+
+        cenusd3 = cenusd3.dropna(axis=0, how='all', thresh=None)
+        cenusd6 = cenusd6.dropna(axis=0, how='all', thresh=None)
+        cenusd4 = cenusd4.dropna(axis=0, how='all', thresh=None)
+
+        cusd2 = cusd2.dropna(axis=0, how='all', thresh=None)
+        cusd4 = cusd4.dropna(axis=0, how='all', thresh=None)
+        cusd7 = cusd7.dropna(axis=0, how='all', thresh=None)
+
+        fusd5 = fusd5.dropna(axis=0, how='all', thresh=None)
+        fusd6 = fusd6.dropna(axis=0, how='all', thresh=None)
 
         msrA = msrA.dropna(axis=0, how='all', thresh=None)
-        msrC = msrC.dropna(axis=0, how='all', thresh=None)
-        msrM = msrM.dropna(axis=0, how='all', thresh=None)
-
-        fcscj6 = fcscj6.dropna(axis=0, how='all', thresh=None)
-        fcscj11 = fcscj11.dropna(axis=0, how='all', thresh=None)
+        msrD = msrD.dropna(axis=0, how='all', thresh=None)
         
         # Remove NaNs from data
-        may = may.fillna('')
+        fcboe2 = fcboe2.fillna('')
 
-        cc4 = cc4.fillna('')
+        scccd2 = scccd2.fillna('')
+        scccd3 = scccd3.fillna('')
+        scccd6 = scccd6.fillna('')
+        scccd7 = scccd7.fillna('')
+        
+        cenusd3 = cenusd3.fillna('')
+        cenusd6 = cenusd6.fillna('')
+        cenusd4 = cenusd4.fillna('')
+
+        cusd2 = cusd2.fillna('')
+        cusd4 = cusd4.fillna('')
+        cusd7 = cusd7.fillna('')
+
+        fusd5 = fusd5.fillna('')
+        fusd6 = fusd6.fillna('')
 
         msrA = msrA.fillna('')
-        msrC = msrC.fillna('')
-        msrM = msrM.fillna('')
-
-        fcscj6 = fcscj6.fillna('')
-        fcscj11 = fcscj11.fillna('')
+        msrD = msrD.fillna('')
         
         # -------------------------- Write data to files
         
         try:
             
             # Servin' it up, Gary's way
-            overview_data.to_json('./data/overview.json', orient='table', index=True)
+            overview_data.to_json('./data/overview.json', orient='table')
 
-            may.to_json('./data/may.json', orient='table', index=True)
+            fcboe2.to_json('./data/fcboe2.json', orient='table')
+            fcboe3.to_json('./data/fcboe3.json', orient='table')
 
-            cc4.to_json('./data/cc4.json', orient='table', index=True)
+            scccd2.to_json('./data/scccd2.json', orient='table')
+            scccd3.to_json('./data/scccd3.json', orient='table')
+            scccd6.to_json('./data/scccd6.json', orient='table')
+            scccd7.to_json('./data/scccd7.json', orient='table')
 
-            msrA.to_json('./data/msrA.json', orient='table', index=True)
-            msrC.to_json('./data/msrC.json', orient='table', index=True)
-            msrM.to_json('./data/msrM.json', orient='table', index=True)
+            cenusd3.to_json('./data/cenusd3.json', orient='table')
+            cenusd6.to_json('./data/cenusd6.json', orient='table')
+            cenusd4.to_json('./data/cenusd4.json', orient='table')
 
-            fcscj6.to_json('./data/fcscj6.json', orient='table', index=True)
-            fcscj11.to_json('./data/fcscj11.json', orient='table', index=True)
+            cusd2.to_json('./data/cusd2.json', orient='table')
+            cusd4.to_json('./data/cusd4.json', orient='table')
+            cusd7.to_json('./data/cusd7.json', orient='table')
+
+            fusd5.to_json('./data/fusd5.json', orient='table')
+            fusd6.to_json('./data/fusd6.json', orient='table')
+
+            msrA.to_json('./data/msrA.json', orient='table')
+            msrD.to_json('./data/msrD.json', orient='table')
             
         except DataError:
             
