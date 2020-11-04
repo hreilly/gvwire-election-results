@@ -144,8 +144,8 @@ while True:
         fusd6 = dfs[58]
         
         # Ballot Measures
-        msrA = dfs[191]
-        msrD = dfs[195]
+        msrA = dfs[190]
+        msrD = dfs[194]
         
         # ----------------------------------------------- End initial df defs
         
