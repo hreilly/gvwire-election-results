@@ -847,7 +847,7 @@ $.ajax({
     var msrA_votes = (msrA.votePrcnt);
     var msrA_num = (msrA.voteNum);
     var msrA_data = '<div class="fresno-item ballot-index-item-' + msrA_index + ' fresno-measure"' + ' data-value="' + msrA_num + '">' +
-                    '<div class="' + (msrA_name == 'bonds-yes' ? 'yesPercent' : " ") + (msrA_name == 'bonds-no' ? 'noPercent' : " ") + '">' + '<span class="item-name ' + '">' + msrA_name + '</span>' + 
+                    '<div class="' + (msrA_name == 'yes' ? 'yesPercent' : " ") + (msrA_name == 'no' ? 'noPercent' : " ") + '">' + '<span class="item-name ' + '">' + msrA_name + '</span>' + 
                     (msrA_index != '0' ? ': ' : "") + ' ' + 
                     (msrA_votes != null ? msrA_votes + ' &nbsp;|&nbsp; ' : "") + 
                     msrA_num + '</div>' + '</div>';
