@@ -800,8 +800,8 @@ $.ajax({
 $.ajax({
   url: '/wp-content/elections/11_2020/data/fusd6.json'
 }).done(function(resp){
-  var resp_string = JSON.stringify(resp);
-  $('#fresno-county-data').append(resp_string);
+  // var resp_string = JSON.stringify(resp);
+  // $('#fresno-county-data').append(resp_string);
   var fusd6 = resp.data;
   $.each( fusd6, function( key, fusd6 ){
     var fusd6_index = (fusd6.index);
@@ -847,7 +847,7 @@ $.ajax({
     var msrA_votes = (msrA.votePrcnt);
     var msrA_num = (msrA.voteNum);
     var msrA_data = '<div class="fresno-item ballot-index-item-' + msrA_index + ' fresno-measure"' + ' data-value="' + msrA_num + '">' +
-                    '<div class="' + (msrA_name == 'bonds - yes' ? 'yesPercent' : " ") + (msrA_name == 'bonds - no' ? 'noPercent' : " ") + '">' + '<span class="item-name ' + '">' + msrA_name + '</span>' + 
+                    '<div class="' + (msrA_name == 'bonds-yes' ? 'yesPercent' : " ") + (msrA_name == 'bonds-no' ? 'noPercent' : " ") + '">' + '<span class="item-name ' + '">' + msrA_name + '</span>' + 
                     (msrA_index != '0' ? ': ' : "") + ' ' + 
                     (msrA_votes != null ? msrA_votes + ' &nbsp;|&nbsp; ' : "") + 
                     msrA_num + '</div>' + '</div>';
@@ -870,8 +870,8 @@ $.ajax({
 $.ajax({
   url: '/wp-content/elections/11_2020/data/msrD.json'
 }).done(function(resp){
-  //var resp_string = JSON.stringify(resp);
-  //$('#fresno-county-data').append(resp_string);
+  var resp_string = JSON.stringify(resp);
+  $('#fresno-county-data').append(resp_string);
   var msrD = resp.data;
   $.each( msrD, function( key, msrD ){
     var msrD_index = (msrD.index);
@@ -880,7 +880,7 @@ $.ajax({
     var msrD_votes = (msrD.votePrcnt);
     var msrD_num = (msrD.voteNum);
     var msrD_data = '<div class="fresno-item ballot-index-item-' + msrD_index + ' fresno-measure"' + ' data-value="' + msrD_num + '">' +
-                    '<div class="' + (msrD_name == 'bonds - yes' ? 'yesPercent' : " ") + (msrD_name == 'bonds - no' ? 'noPercent' : " ") + '">' + '<span class="item-name ' + '">' + msrD_name + '</span>' + 
+                    '<div class="' + (msrD_name == 'bonds-yes' ? 'yesPercent' : " ") + (msrD_name == 'bonds-no' ? 'noPercent' : " ") + '">' + '<span class="item-name ' + '">' + msrD_name + '</span>' + 
                     (msrD_index != '0' ? ': ' : "") + ' ' + 
                     (msrD_votes != null ? msrD_votes + ' &nbsp;|&nbsp; ' : "") + 
                     msrD_num + '</div>' + '</div>';
