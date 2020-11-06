@@ -68,7 +68,7 @@ while True:
         ########## Begin processing response from HTTP request
         
         # Create filter with SoupStrainer to limit parsing to main div | This id may change, watch out
-        res_filter = SoupStrainer('div',{'id': 'gems_results'})
+        res_filter = SoupStrainer('div',{'id': 'widget_1075_12407_8555'})
         
         # Grab the strained soup
         soup = BeautifulSoup(res.content,'lxml',parse_only=res_filter)
